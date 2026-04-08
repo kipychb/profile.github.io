@@ -1,0 +1,287 @@
+/* --- 1. 核心視覺：織物背景與全域 --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    background-color: #f8f7f2; 
+    font-family: 'Noto Serif TC', serif; 
+    color: #1a1b1f; 
+    overflow-x: hidden; 
+}
+
+/* 織物背景與雜訊 (全域套用) */
+.grainy-bg {
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100vw; height: 100vh;
+    background-image: url("image/stripe-bg.jpg"); 
+    background-repeat: repeat; 
+    background-size: 250px; 
+    opacity: 0.18; 
+    z-index: -2; 
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+/* --- 2. 佈局容器與載入動畫 --- */
+.project-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-container.loaded { opacity: 1; transform: translateY(0); }
+
+/* --- 3. 標題與引言區 (統一排版) --- */
+.project-header {
+    margin-bottom: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-title {
+    font-family: 'Cormorant Upright', serif;
+    color: #666;
+    font-size: 100px;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 0.85;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.editorial-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+}
+
+/* 所有的引言文字都共用這個排版架構 */
+.editorial-text {
+    grid-column: 4 / 10; 
+    padding-left: 40px;
+    border-left: 1.5px solid transparent; /* 預設透明 */
+}
+
+/* --- 專案個別顏色設定 --- */
+/* 專案1：母親節 (紅色系) */
+.p1-border { border-left-color: #a34848; }
+.p1-tag { color: #a34848; }
+
+/* 專案2：企業概論 (咖啡色系) */
+.p2-border { border-left-color: rgb(35, 84, 35); }
+.p2-tag { color: rgb(35, 84, 35); }
+
+/* 專案3：畢業紀念冊 (深藍色系) */
+.p3-border { border-left-color: #3c3c77; }
+.p3-tag { color: #3c3c77; }
+
+.category-tag {
+    font-size: 12px;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.main-quote {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    text-align: justify;
+}
+
+/* --- 4. 12 欄位畫廊與圖片 --- */
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.gallery-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.art-piece {
+    width: fit-content; /* 關鍵：確保容器縮小到圖片寬度 */
+}
+
+.art-piece img {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+    transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.art-piece img:hover { transform: scale(1.03); }
+
+.caption {
+    margin-top: 30px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.caption strong { color: #333; letter-spacing: 1px; }
+
+/* --- 5. 影片與按鈕 (統一樣式) --- */
+/* 移除邊框與背景，專為直式影片設計 */
+.video-container {
+    grid-column: 1 / 13;
+    text-align: center;
+    margin: 80px 0;
+}
+
+.video-no-frame {
+    width: 100%;
+    max-width: 350px; /* 直式影片建議寬度，與妳的圖片大小一致 */
+    margin: 0 auto;
+    background: none; /* 移除背景 */
+    padding: 0;      /* 移除內距 */
+    border: none;    /* 移除邊框 */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* 僅保留輕微陰影增加立體感 */
+}
+
+.video-no-frame video {
+    width: 100%;
+    display: block;
+}
+
+/* 找到這段並修改 max-width */
+.video-frame, .video-wrapper {
+    width: 100%;
+    max-width: 960px; 
+    margin: 0 auto;
+    border: 1px solid #1a1b1f;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 15px 15px 0px rgba(26, 27, 31, 0.05);
+}
+
+video { width: 100%; display: block; }
+
+.external-link-box {
+    grid-column: 1 / 13;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-visit {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid #a34848;
+    color: #a34848;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.btn-visit:hover {
+    background: #a34848;
+    color: #fff;
+}
+
+/* --- 6. 導覽列 --- */
+.nav-back {
+    position: fixed;
+    top: 40px; left: 40px;
+    z-index: 1000;
+}
+
+.nav-back a {
+    text-decoration: none;
+    color: #a34848;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* --- 佈局輔助類 (用於替代行內 style) --- */
+
+/* 基礎 Row 設定：確保 12 欄位格線生效 */
+.gallery-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 50px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* 元素位置控制 */
+.grid-left {
+    grid-column: 2 / 9;
+    width: fit-content;
+    justify-self: start;
+}
+
+.grid-right {
+    grid-column: 8 / 13;
+    width: fit-content;
+    justify-self: end;
+}
+
+.grid-center {
+    grid-column: 4 / 11;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.grid-full {
+    grid-column: 1 / 13;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 圖片與影片尺寸標準化 */
+.img-standard {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-standard {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* 文字微調類 */
+.text-left { text-align: left; }
+.mt-20 { margin-top: 20px; }
+.mt-0 { margin-top: 20px; }
+
+/* 專案按鈕顏色設定 */
+.btn-p1 { border-color: #a34848; color: #a34848; } /* 母親節 */
+.btn-p1:hover { background: #a34848; color: #fff; }
+
+
+.btn-p3 { border-color: #3c3c77; color: #3c3c77; background-color: aliceblue; } /* 畢冊 */
+.btn-p3:hover { background: #3c3c77; color: #fff; }

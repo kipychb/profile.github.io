@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother's Day Wish // Kars' Gallery</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@600;800&family=Playfair+Display:ital,wght@1,900&family=Noto+Serif+TC:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+    <div class="custom-cursor"></div>
+    <div class="grainy-bg"></div>
+    <nav class="nav-back"><a href="profolio.html">← BACK TO GALLERY</a></nav>
+
+    <main class="project-container" id="main-content">
+        <header class="project-header">
+            <h1 class="project-title">Mother's Day Card</h1>
+            <div class="editorial-row">
+                <div class="editorial-text p1-border">
+                    <span class="category-tag p1-tag">EDITORIAL / DESIGN CONCEPT</span>
+                    <p class="main-quote">「愛是無聲的灌溉，讓幼苗能成為他人的蔭蔽。」</p>
+                    <p class="description">
+                        這份作品的核心概念是「灌溉」。每個人最初都是一株脆弱的小苗，而媽媽就像那位不辭辛勞、日復一日為我們澆水的人，陪伴我們成長，直到我們能夠獨立站穩。整體以「成長與回饋」為主軸，將母愛比擬為滋養生命的水。
+                        在視覺上，我選擇了美式風格，這種線條帶有一種跨越國界的親切感，希望祝福能被更多人理解。畫面中深紅髮色的女性，則是我對母親形象的投射，也是設計中最具情感溫度的靈魂。
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <section class="image-gallery">
+            <div class="gallery-row">
+                <div class="art-piece grid-left">
+                    <img src="image/mother-card.png" alt="Front View" class="img-standard">
+                    <div class="caption">
+                        <strong>★ FRONT VIEW</strong> // 正面以「Your love helps me grow」為題，呈現幼苗在愛中成長茁壯。
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-row">
+                <div class="art-piece grid-right">
+                    <img src="image/mother-card-back.png" alt="Back View" class="img-standard">
+                    <div class="caption">
+                        <strong>★ BACK VIEW</strong> // 曾經被灌溉的小苗已成長為大樹，現在換我們為媽媽遮風擋雨。
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-row">
+                <div class="art-piece grid-center">
+                    <img src="image/award.jpg" alt="Recognition" class="img-standard">
+                    <div class="caption text-left mt-20">
+                        <strong>★ RECOGNITION</strong> // 榮獲 114 學年中原大學母親節卡片設計比賽佳作。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => { document.getElementById('main-content').classList.add('loaded'); }
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('.art-piece, .btn-visit').forEach(item => {
+            item.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+            item.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        });
+    </script>
+</body>
+
+</html>

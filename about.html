@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="subpage-body">
+
+    <div class="background-dots"></div>
+    <div class="lace-overlay"></div>
+
+    <a href="index.html" class="back-home">
+        <span>Back to Home</span>
+    </a>
+
+    <main class="retro-window" id="about-window">
+        <div class="window-header">
+            <span class="window-title-text">C:\Documents\Elyra\Profile.txt</span>
+            <div class="window-controls">
+                <button class="win-btn win-close" onclick="toggleWindow()">X</button>
+            </div>
+        </div>
+
+        <div class="window-body">
+            <div class="window-content-inner">
+                <div class="profile-top-section">
+                    <div class="profile-photo-area">
+                        <div class="photo-frame">
+                            <img src="image/me.PNG" alt="Elyra" class="profile-img">
+                        </div>
+                    </div>
+
+                    <div class="profile-info-area">
+                        <h2 class="elyra-signature">Elyra</h2>
+                        <section class="keywords-bar">
+                            <span>thoughtful</span><span>✦</span><span>warm</span><span>✦</span><span>creative</span>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="profile-bottom-section">
+                    <div class="retro-fieldset">
+                        <span class="fieldset-legend">Personal Intro</span>
+                        <div class="fieldset-content">
+                            <p>
+                                我是一個喜歡觀察、思考，也熱愛創作的人。在設計與製作的過程中，我特別喜歡沒有固定答案的開放性，因為那能讓我自由發揮、嘗試不同的想法。
+                                我對網頁設計與視覺呈現有濃厚的興趣，重視結構的清晰與細節的表達，希望作品能兼具溫度與故事感；
+                                在生活中，我喜歡看漫畫、聽音樂、散步，也常從日常的小事中發現靈感。
+                                朋友常形容我是一個溫柔、細膩又可靠的人，在團隊中能安靜觀察情況，並在需要時提供實際的建議。
+                                我期望未來能在持續學習與創作中，不斷累積經驗，讓作品更有深度與個人特色，並在需要時提供實際的建議。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="kitty-game-container">
+        <div class="kitty-character-area" ondragover="allowDrop(event)" ondrop="dropCap(event)">
+            <img src="image/kitty (1).png" alt="Kitty" class="kitty-base-img">
+            <img src="" alt="Selected Cap" class="selected-cap-overlay" id="selected-cap">
+        </div>
+
+        <div class="cap-selection-area">
+            <p>✧ DRAG A CAP TO KITTY! ✧</p>
+            <div class="cap-options">
+                <img src="image/cap1.png" class="cap-option-btn" draggable="true"
+                    ondragstart="dragStart(event, 'image/cap1.png')">
+                <img src="image/cap2.png" class="cap-option-btn" draggable="true"
+                    ondragstart="dragStart(event, 'image/cap2.png')">
+                <img src="image/cap3.png" class="cap-option-btn" draggable="true"
+                    ondragstart="dragStart(event, 'image/cap3.png')">
+            </div>
+            <button class="reset-link" onclick="resetKitty()">[ Reset Kitty ]</button>
+        </div>
+    </section>
+
+    <div id="restore-icon" class="hidden-trigger" onclick="toggleWindow()" style="display:none;">
+        <span>Open Profile</span>
+    </div>
+
+    <script>
+        function toggleWindow() {
+            const win = document.getElementById('about-window');
+            const icon = document.getElementById('restore-icon');
+            if (win.style.display === 'none') {
+                win.style.display = 'flex';
+                icon.style.display = 'none';
+            } else {
+                win.style.display = 'none';
+                icon.style.display = 'flex';
+            }
+        }
+
+        function dragStart(event, src) { event.dataTransfer.setData("text", src); }
+        function allowDrop(event) { event.preventDefault(); }
+        function dropCap(event) {
+            event.preventDefault();
+            const src = event.dataTransfer.getData("text");
+            const selectedCap = document.getElementById('selected-cap');
+            selectedCap.src = src;
+            selectedCap.style.opacity = 1;
+        }
+        function resetKitty() {
+            const selectedCap = document.getElementById('selected-cap');
+            selectedCap.style.opacity = 0;
+            selectedCap.src = "";
+        }
+    </script>
+</body>
+
+</html>

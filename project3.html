@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Class Gazette // Kars' Gallery</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@600;800&family=Playfair+Display:ital,wght@1,900&family=Noto+Serif+TC:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+    <div class="custom-cursor"></div>
+    <div class="grainy-bg"></div>
+    <nav class="nav-back"><a href="profolio.html">← BACK TO GALLERY</a></nav>
+
+    <main class="project-container" id="main-content">
+        <header class="project-header">
+            <h1 class="project-title">The Class Gazette</h1>
+            <div class="editorial-row">
+                <div class="editorial-text p3-border">
+                    <span class="category-tag p3-tag">EDITORIAL / MEMORY ARCHIVE</span>
+                    <p class="main-quote">「每個人都是自己故事裡的主角。」</p>
+                    <p class="description">
+                        在高中的畢業紀念冊設計中，我擔任班級的主設計。我以「報紙專欄」為核心概念，將每位同學的照片編排成獨立專欄，象徵每個人都有屬於自己的生命故事。
+                        版面結構以藍白報紙風格為主，搭配細緻字體與分欄排版，營造懷舊感與故事性，
+                        這次設計讓我學會在排版中結合文字敘事與視覺節奏，掌握整體構圖的一致性。
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <section class="image-gallery">
+            <div class="gallery-row">
+                <div class="art-piece grid-left">
+                    <img src="image/part-yearbook.png" alt="Yearbook Cover" class="img-standard">
+                    <div class="caption">
+                        <strong>★ NEWSPAPER CONCEPT</strong> // 藍白報紙風格的設計，奠定整體懷舊基調。
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-row">
+                <div class="video-container grid-center">
+                    <div class="video-frame video-standard">
+                        <video autoplay muted loop playsinline poster="image/video-cover.png">
+                            <source src="video/yearbook.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
+                        </video>
+                    </div>
+                    <div class="caption mt-20">
+                        <strong>★ THE STORY UNFOLDS</strong> // 動態翻閱錄影，呈現版面分欄排版與文字敘事的節奏感。
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-row">
+                <div class="external-link-box grid-full">
+                    <a href="https://canva.link/b8zqjjomoiatzp6" target="_blank" class="btn-visit btn-p3">VIEW FULL
+                        GAZETTE →</a>
+                    <div class="caption mt-20">點擊連結查看完整畢業紀念冊版面</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => { document.getElementById('main-content').classList.add('loaded'); }
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('.art-piece, .video-frame, .btn-visit').forEach(item => {
+            item.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+            item.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        });
+    </script>
+</body>
+
+</html>

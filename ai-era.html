@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Era ✦</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Noto+Serif+TC:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="ai-era.css">
+</head>
+
+<body id="main-body">
+    <nav class="gallery-nav">
+        <div class="nav-left">
+            <span class="nav-serial">NO. 2026-IM-DESIGN</span>
+            <h1 class="gallery-title">CYBER BLING</h1>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="back-home">
+                <i class="fa-solid fa-house"></i>
+                <span class="home-text">EXIT</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="experiment-container">
+        <section class="visual-section">
+            <div class="bling-box">
+                <div class="rhinestone-layer logic-layer" id="logic-text">
+                    <span class="rhinestone-char">L</span><span class="rhinestone-char">O</span><span
+                        class="rhinestone-char">G</span><span class="rhinestone-char">I</span><span
+                        class="rhinestone-char">C</span>
+                </div>
+                <div class="rhinestone-layer emotion-layer" id="emotion-text">
+                    <span class="rhinestone-char">E</span><span class="rhinestone-char">M</span><span
+                        class="rhinestone-char">O</span><span class="rhinestone-char">T</span><span
+                        class="rhinestone-char">I</span><span class="rhinestone-char">O</span><span
+                        class="rhinestone-char">N</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="control-section">
+            <div class="slider-container">
+                <div class="slider-labels">
+                    <span class="label">ADJUST THE MODE</span>
+                </div>
+                <input type="range" min="0" max="100" value="50" class="cyber-slider" id="balance-slider">
+
+            </div>
+            <p class="hint">Adjust the refraction of Kars' perspective</p>
+        </section>
+
+        <section class="essay-section">
+            <article class="essay-card">
+                <div class="essay-content">
+                    身為資管系的學生，我理解代碼是冰冷的邏輯，但在 UI/UX 的世界裡，我選擇用水鑽的折射與磨砂銀的清透，為數據賦予溫度。這不只是一場網頁實驗，而是我如何在資訊架構中植入藝術靈魂的過程——讓繁瑣的
+                    JSP 與資料庫邏輯，轉化為視覺上的優雅共鳴。
+                </div>
+            </article>
+        </section>
+
+
+    </main>
+
+    <script>
+        const slider = document.getElementById('balance-slider');
+        const logicText = document.getElementById('logic-text');
+        const emotionText = document.getElementById('emotion-text');
+        const title = document.getElementById('essay-title');
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            const logicOpacity = (100 - val) / 100;
+            const emotionOpacity = val / 100;
+
+            logicText.style.opacity = logicOpacity;
+            emotionText.style.opacity = emotionOpacity;
+
+        });
+    </script>
+</body>
+
+</html>
