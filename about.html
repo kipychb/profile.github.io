@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About Me | Elyra</title>
     <link rel="stylesheet" href="about.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;500;700&display=swap"
         rel="stylesheet">
@@ -27,39 +27,90 @@
             </div>
         </div>
 
+        <div class="tab-header">
+            <button class="tab-btn active" onclick="switchTab(event, 'personal-info')">General</button>
+            <button class="tab-btn" onclick="switchTab(event, 'interests')">Interests</button>
+        </div>
+
         <div class="window-body">
             <div class="window-content-inner">
-                <div class="profile-top-section">
-                    <div class="profile-photo-area">
-                        <div class="photo-frame">
-                            <img src="image/me.PNG" alt="Elyra" class="profile-img">
+
+                <div id="personal-info" class="tab-content active">
+                    <div class="profile-top-section">
+                        <div class="profile-photo-area">
+                            <div class="photo-frame">
+                                <img src="image/me.PNG" alt="Elyra" class="profile-img">
+                            </div>
+                        </div>
+                        <div class="profile-info-area">
+                            <h2 class="elyra-signature">Elyra</h2>
+                            <section class="keywords-bar">
+                                <span>thoughtful</span><span>✦</span><span>warm</span><span>✦</span><span>creative</span>
+                            </section>
                         </div>
                     </div>
 
-                    <div class="profile-info-area">
-                        <h2 class="elyra-signature">Elyra</h2>
-                        <section class="keywords-bar">
-                            <span>thoughtful</span><span>✦</span><span>warm</span><span>✦</span><span>creative</span>
-                        </section>
+                    <div class="profile-bottom-section">
+                        <div class="retro-fieldset">
+                            <span class="fieldset-legend">Personal Intro</span>
+                            <div class="fieldset-content">
+                                <p> 我是一個喜歡觀察、思考，並習慣將情感寄託於創作的人。
+                                    作為一名 INFJ，我擁有敏銳的直覺，能在喧囂中捕捉到微小的細節與情緒，並將其轉化為設計的靈感。
+                                    在網頁設計、視覺表達、程式的世界裡，我特別熱愛「沒有固定答案」的開放性。
+                                    對我而言，結構的清晰是骨架，而細節的表達則是靈魂，我希望讓作品在理性邏輯下，依然能透出人文的溫度與故事感。
+                                    朋友們常形容我是一個溫柔且可靠的傾聽者。
+                                    在團隊中，我會主動詢問每一個人的意見，也會說出自己的看法且仔細觀察被忽視的需求，並在關鍵時刻提供具備同理心且實質的建議。
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="profile-bottom-section">
-                    <div class="retro-fieldset">
-                        <span class="fieldset-legend">Personal Intro</span>
-                        <div class="fieldset-content">
-                            <p>
-                                我是一個喜歡觀察、思考，也熱愛創作的人。在設計與製作的過程中，我特別喜歡沒有固定答案的開放性，因為那能讓我自由發揮、嘗試不同的想法。
-                                我對網頁設計與視覺呈現有濃厚的興趣，重視結構的清晰與細節的表達，希望作品能兼具溫度與故事感；
-                                在生活中，我喜歡看漫畫、聽音樂、散步，也常從日常的小事中發現靈感。
-                                朋友常形容我是一個溫柔、細膩又可靠的人，在團隊中能安靜觀察情況，並在需要時提供實際的建議。
-                                我期望未來能在持續學習與創作中，不斷累積經驗，讓作品更有深度與個人特色，並在需要時提供實際的建議。
-                            </p>
+                <div id="interests" class="tab-content">
+                    <div class="code-export-viewer">
+                        <div class="editor-tab-bar">
+                            <span class="file-tab active">
+                                <span class="json-icon">{ }</span> interests.json
+                            </span>
+                        </div>
+
+                        <div class="code-area">
+                            <pre class="pre-formatted"><code class="json-code">{
+                  <span class="key">"identity"</span>: {
+                    <span class="key">"name"</span>: <span class="string">"Elyra"</span>,
+                    <span class="key">"mbti"</span>: <span class="string">"INFJ"</span>,
+                  },
+                  <span class="key">"internal_process"</span>: {
+                    <span class="key">"status"</span>: <span class="string">"Processing fine-grained emotions..."</span>,
+                    <span class="key">"interests_logic"</span>: [
+                      {
+                        <span class="key">"activity"</span>: <span class="string">"散步 (Mindful Walking)"</span>,
+                        <span class="key">"attribute"</span>: <span class="string">"放鬆心情與靈感擷取"</span>,
+                        <span class="key">"description"</span>: <span class="string">"透過漫步感受光影、空氣與城市的呼吸。這不僅是放鬆，更是對『空間感』的深度修煉，讓我學會在設計中運用留白與節奏，捕捉那些被忽視的細微美感。"</span>
+                      },
+                      {
+                        <span class="key">"activity"</span>: <span class="string">"漫畫與故事 (Manga & Narratives)"</span>,
+                        <span class="key">"attribute"</span>: <span class="string">"人類行為與心境解構"</span>,
+                        <span class="key">"description"</span>: <span class="string">"沉浸於分鏡與角色的內心戲。漫畫教會我如何代入不同人格的視角，這讓我具備了極強的同理心，能精準預判使用者在面對介面時的情緒起伏與潛在需求。"</span>
+                      },
+                      {
+                        <span class="key">"activity"</span>: <span class="string">"閱詩與文字 (Poetry & Self-Reflect)"</span>,
+                        <span class="key">"attribute"</span>: <span class="string">"情緒韌性與精煉表達"</span>,
+                        <span class="key">"description"</span>: <span class="string">"詩是靈魂的避風港。在精煉的文字中尋找共鳴並慰藉自我，這訓練了我用最少、最溫暖的語彙傳達深刻意義的能力，並在高壓環境中維持核心系統的穩定。"</span>
+                      },
+                      {
+                        <span class="key">"activity"</span>: <span class="string">"溜直排輪 (In-line Skating)"</span>,
+                        <span class="key">"attribute"</span>: <span class="string">"動態平衡與危機應變"</span>,
+                        <span class="key">"description"</span>: <span class="string">"在速度中尋求重心的穩定。這項運動讓我體會到：即便外界環境快速變遷或處於高壓失衡狀態，只要核心穩固，就能冷靜地做出優雅且精確的轉向判斷。"</span>
+                      }
+                    ]
+                  },
+                  <span class="key">"log"</span>: <span class="string">"System running perfectly. All quiet activities contribute to a louder creative impact."</span>
+                }</code></pre>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <section class="kitty-game-container">
@@ -67,16 +118,15 @@
             <img src="image/kitty (1).png" alt="Kitty" class="kitty-base-img">
             <img src="" alt="Selected Cap" class="selected-cap-overlay" id="selected-cap">
         </div>
-
         <div class="cap-selection-area">
             <p>✧ DRAG A CAP TO KITTY! ✧</p>
             <div class="cap-options">
                 <img src="image/cap1.png" class="cap-option-btn" draggable="true"
-                    ondragstart="dragStart(event, 'image/cap1.png')">
-                <img src="image/cap2.png" class="cap-option-btn" draggable="true"
-                    ondragstart="dragStart(event, 'image/cap2.png')">
-                <img src="image/cap3.png" class="cap-option-btn" draggable="true"
-                    ondragstart="dragStart(event, 'image/cap3.png')">
+                    ondragstart="dragStart(event, 'image/cap1.png')" onclick="selectCap('image/cap1.png')"> <img
+                    src="image/cap2.png" class="cap-option-btn" draggable="true"
+                    ondragstart="dragStart(event, 'image/cap2.png')" onclick="selectCap('image/cap2.png')"> <img
+                    src="image/cap3.png" class="cap-option-btn" draggable="true"
+                    ondragstart="dragStart(event, 'image/cap3.png')" onclick="selectCap('image/cap3.png')">
             </div>
             <button class="reset-link" onclick="resetKitty()">[ Reset Kitty ]</button>
         </div>
@@ -99,6 +149,15 @@
             }
         }
 
+        function switchTab(event, tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
         function dragStart(event, src) { event.dataTransfer.setData("text", src); }
         function allowDrop(event) { event.preventDefault(); }
         function dropCap(event) {
@@ -113,6 +172,13 @@
             selectedCap.style.opacity = 0;
             selectedCap.src = "";
         }
+
+        function selectCap(src) {
+            const selectedCap = document.getElementById('selected-cap');
+            selectedCap.src = src;
+            selectedCap.style.opacity = 1;
+        }
+
     </script>
 </body>
 

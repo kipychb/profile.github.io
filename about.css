@@ -1,4 +1,3 @@
-/* --- 1. 基礎與背景 --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     background-color: #fdfaf6;
@@ -22,14 +21,14 @@ body {
     pointer-events: none; z-index: -9;
 }
 
-/* --- 2. 右上角 Back Home --- */
 .back-home {
     position: fixed; top: 30px; right: 30px;
-    text-decoration: none; display: flex; align-items: center; gap: 12px; z-index: 100;
+    text-decoration: none; display: flex; align-items: center; 
+    gap: 12px; z-index: 100;
 }
-.back-home span { color: #a34848; font-size: 22px; font-style: italic; letter-spacing: 1px; }
+.back-home span { color: #a34848; font-size: 22px; 
+font-style: italic; letter-spacing: 1px; }
 
-/* --- 3. Retro 視窗 --- */
 .retro-window {
     width: 600px; max-height: 500px;
     background-color: #c0c0c0;
@@ -39,7 +38,8 @@ body {
 }
 .window-header {
     background: linear-gradient(90deg, #000080 0%, #0080e0 100%);
-    height: 25px; padding: 0 10px; display: flex; justify-content: space-between; align-items: center;
+    height: 25px; padding: 0 10px; display: flex; 
+    justify-content: space-between; align-items: center;
 }
 .window-title-text { font-size: 12px; color: white; font-weight: bold; }
 .win-btn {
@@ -47,7 +47,8 @@ body {
     border: 2px solid; border-color: #fff #000 #000 #fff;
     font-size: 11px; font-weight: bold; cursor: pointer;
 }
-.window-body { flex: 1; padding: 12px; display: flex; flex-direction: column; overflow: hidden; }
+.window-body { flex: 1; padding: 12px; display: flex; 
+flex-direction: column; overflow: hidden; }
 .window-content-inner {
     flex: 1; background-color: #fff;
     border: 2px solid; border-color: #808080 #fff #fff #808080;
@@ -55,24 +56,34 @@ body {
 }
 
 /* 視窗內部排版 */
-.profile-top-section { display: flex; gap: 60px; align-items: flex-start; margin-bottom: 25px; }
-.photo-frame { width: 140px; height: 140px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.profile-top-section { display: flex; gap: 60px; 
+align-items: flex-start; margin-bottom: 25px; }
+.photo-frame { width: 140px; height: 140px; 
+border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 .profile-img { width: 100%; height: 100%; object-fit: cover; }
 .elyra-signature {
     font-family: 'Cormorant Upright', serif; font-size: 3rem; line-height: 1;
     background: linear-gradient(to bottom, #fff, #9e9d9d, #fff);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 8px #f8c8dc); margin-top: 20px;
+    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 8px #f8c8dc); 
+    margin-top: 20px;
 }
-.keywords-bar { display: flex; gap: 6px; font-size: 15px; font-weight: bold; color: #a34848; margin-top: 45px; }
+.keywords-bar { display: flex; gap: 6px; font-size: 16px; font-weight: bold; 
+color: #a34848; margin-top: 45px; }
 
 /* 自我介紹文字 */
-.retro-fieldset { position: relative; border: 2px solid; border-color: #808080 #fff #fff #808080; padding: 20px; background-color: #fcfcfc; }
-.fieldset-legend { position: absolute; top: -10px; left: 10px; background: white; padding: 0 8px; font-size: 15px; color: #a34848; font-weight: bold; }
-.fieldset-content p { line-height: 1.8; color: #555; font-size: 15px; text-align: justify; }
+.retro-fieldset { position: relative; border: 2px solid; 
+border-color: #808080 #fff #fff #808080;
+padding: 20px; background-color: #fcfcfc; }
+.fieldset-legend { position: absolute; top: -10px; left: 10px; 
+background: white; padding: 0 8px; font-size: 16px; 
+color: #a34848; font-weight: bold; }
+.fieldset-content p { line-height: 1.8; color: #555; 
+font-size: 15px; text-align: justify; }
 
-/* --- 💖 4. Kitty 換裝遊戲 (修正版) 💖 --- */
-.kitty-game-container { flex: 1; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+/* Kitty 換裝遊戲 */
+.kitty-game-container { flex: 1; display: flex; flex-direction: column; 
+justify-content: space-between; align-items: center; }
 
 .kitty-character-area {
     position: relative;
@@ -80,18 +91,17 @@ body {
 }
 
 .kitty-base-img { 
-    width: 260px; /* 控制 Kitty 本體大小 */
+    width: 260px;
     filter: drop-shadow(0 0 15px white); 
     display: block;
 }
 
-/* ✨ 帽子大小與位置修正 ✨ */
 .selected-cap-overlay {
     position: absolute;
-    top: 10px; /* 向上微調，讓帽子戴在頭上 */
+    top: 10px; 
     left: 50.5%;
     transform: translateX(-50%);
-    width: 115px; /* 縮小帽子寬度，讓它符合 Kitty 的頭 */
+    width: 115px;
     height: 65px;
     opacity: 0;
     transition: 0.3s;
@@ -106,7 +116,228 @@ body {
 .cap-options { display: flex; gap: 15px; }
 .cap-option-btn { width: 80px; height: 60px; cursor: grab; transition: 0.2s; }
 .cap-option-btn:hover { transform: scale(1.1); }
-.reset-link { margin-top: 10px; background: none; border: none; color: #e3dbdb; font-size: 12px; cursor: pointer; text-decoration: underline; }
+.reset-link { margin-top: 10px; background: none; border: none;
+color: #e3dbdb; font-size: 12px; cursor: pointer; text-decoration: underline; }
 
-/* --- 5. 底部 --- */
-.hidden-trigger { position: fixed; bottom: 40px; left: 40px; cursor: pointer; color: #a34848; font-size: 22px; font-style: italic; }
+/* 底部 */
+.hidden-trigger { position: fixed; bottom: 40px; left: 40px; 
+cursor: pointer; color: #a34848; font-size: 22px; font-style: italic; }
+
+/* 分頁按鈕樣式  */
+.tab-header {
+    display: flex;
+    padding: 5px 10px 0 10px;
+    background-color: #c0c0c0;
+}
+
+.tab-btn {
+    padding: 4px 12px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #c0c0c0 #fff; 
+    border-bottom: none;
+    cursor: pointer;
+    font-size: 13px;
+    margin-right: 2px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    top: 2px;
+    z-index: 1;
+}
+
+.tab-btn.active {
+    top: 0;
+    padding-top: 6px;
+    padding-bottom: 5px;
+    background: #fff;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* 分頁內容 */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.code-export-viewer {
+    background-color: #ffffff; 
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', 'Anonymous Pro', monospace; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.editor-tab-bar {
+    background-color: #f3f3f3; 
+    border-bottom: 1px solid #e1e1e1;
+    padding: 0 10px;
+}
+.file-tab {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #ffffff; 
+    border-right: 1px solid #e1e1e1;
+    font-size: 12px;
+    color: #333;
+    position: relative;
+    top: 1px; 
+}
+.json-icon {
+    color: #b57c14; 
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.code-area {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto; 
+    text-align: left;
+}
+
+.pre-formatted {
+    margin: 0;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+}
+.json-code {
+    font-size: 13px;
+    line-height: 1.6;
+    display: block;
+    color: #24292e; 
+}
+
+
+.json-code .key { 
+    color: #005cc5; 
+}
+.json-code .string { 
+    color: #22863a; 
+}
+.json-code .comment { 
+    color: #6a737d; 
+    font-style: italic; 
+}
+
+/* RWD */
+
+/* 針對筆電與平板 (1024px 以下) */
+@media (max-width: 1024px) {
+    body {
+        flex-direction: column; 
+        overflow-y: auto;       
+        padding: 80px 40px;     
+        height: auto;
+        justify-content:center;
+        gap: 50px;
+    }
+
+    .retro-window {
+        width: 100%;            
+        max-height: none;      
+    }
+
+    .kitty-game-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* 針對手機螢幕 (768px 以下) */
+@media (max-width: 768px) {
+    .back-home {
+        top: 30px;
+        right: 40px;
+    }
+    .back-home span {
+        font-size: 18px;
+    }
+
+   
+    .profile-top-section {
+        flex-direction: column; 
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .photo-frame {
+        width: 120px;
+        height: 120px;
+    }
+
+    .elyra-signature {
+        font-size: 2.5rem;
+        margin-top: 10px;
+    }
+
+    .keywords-bar {
+        margin-top: 15px;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    
+    .tab-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    
+    .json-code {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .code-area {
+        padding: 15px; 
+    }
+
+    
+    .kitty-base-img {
+        width: 200px;
+    }
+    .selected-cap-overlay {
+        width: 88px; 
+        height: 50px;
+    }
+    .cap-option-btn {
+        width: 60px;
+        height: 45px;
+    }
+}
+
+.cap-option-btn {
+    cursor: pointer;
+    touch-action: manipulation; 
+}
+
+.cap-option-btn:active {
+    transform: scale(0.9); 
+}
+
+
+/* 針對極小螢幕 (480px 以下) */
+@media (max-width: 480px) {
+    .window-title-text {
+        font-size: 10px; 
+    }
+    
+    .fieldset-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .hidden-trigger {
+        bottom: 20px;
+        left: 20px;
+        font-size: 18px;
+    }
+}

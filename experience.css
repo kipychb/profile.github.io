@@ -1,0 +1,205 @@
+body {
+    margin: 0; padding: 0;
+    color: #2b1d0c;
+    font-family: 'Noto Serif TC', serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 復古灰藍淡黃波點背景 */
+.dot-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+    background-color: #a4adbc;
+    background-image: radial-gradient(#f4f1d4 1.5px, transparent 1.5px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.9;
+}
+
+/* 導覽列 */
+.archive-nav {
+    display: flex; justify-content: flex-end; padding: 30px 50px;
+    position: fixed; top: 0; width: 100%; box-sizing: border-box;
+    z-index: 1000; font-weight: bold;
+}
+.exit-btn { 
+    background: #3d5032; color: #fff;
+    text-decoration: none; font-size: 14px; 
+    border: 1.5px dashed #3d5032; padding: 8px 15px; 
+    font-family: 'Anonymous Pro', monospace;
+}
+
+/* 標題區 */
+.archive-header {
+    height: 50vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+}
+.main-title { 
+    font-family: 'Arvo', serif; font-size: 55px;
+    color: #3d5032; margin: 0; line-height: 1; 
+}
+
+/* 卡片排版 */
+.archive-timeline { max-width: 1000px; margin: 0 auto; padding-bottom: 50px; }
+
+.archive-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+    align-items: center; margin-bottom: 80px;
+    opacity: 0; transform: translateY(40px);
+    transition: all 1s ease-out;
+}
+.archive-card.is-visible { opacity: 1; transform: translateY(0); }
+
+/* 卡片內文 */
+.card-text { 
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 35px; border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: left;
+}
+.card-tag { 
+    color: #3d5032; font-size: 12px; font-weight: bold;
+    font-family: 'Anonymous Pro', monospace; display: block; margin-bottom: 15px; 
+}
+.card-title { font-size: 24px; color: #2b1d0c; margin-bottom: 20px; }
+
+.card-body { 
+    font-size: 15px; line-height: 1.9; color: #444; 
+    text-align: left; 
+    white-space: normal;
+    margin-bottom: 25px;
+    text-indent: 0 !important;
+    display: block; 
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.card-role h3 { font-size: 15px; color: #3d5032; margin-bottom: 12px; font-family: 'Anonymous Pro', monospace; }
+.card-role ul { list-style: none; padding: 0; margin: 0; }
+.card-role li { 
+    font-size: 14.5px; color: #666; margin-bottom: 8px; 
+    text-indent: 0 !important;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* 圖片處理 */
+.card-images.vertical {
+    display: flex; flex-direction: column; 
+    gap: 20px; width: 300px; height: auto;
+}
+.card-images.single { width: 400px; }
+.card-images img {
+    width: 100%; height: auto; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.video-btn {
+    display: inline-block; padding: 10px 22px; border: 1.5px dashed #3d5032;
+    color: #3d5032; text-decoration: none; font-size: 13px; margin-top: 15px;
+    font-family: 'Anonymous Pro', monospace;
+}
+.video-btn:hover { background: #3d5032; color: #fff; }
+
+.card-star-divider {
+    text-align: center; font-size: 24px; color: #f4f1d4; 
+    margin-bottom: 80px; letter-spacing: 25px;
+}
+
+.archive-footer {
+    text-align: center; padding: 30px 0; background: rgba(0,0,0,0.03);
+}
+.end-stars { font-size: 28px; color: #f4f1d4; margin-bottom: 15px; letter-spacing: 15px; }
+
+/* RWD */
+
+/* 針對平板以下螢幕 (1024px 以下) */
+@media (max-width: 1024px) {
+    .archive-header {
+        height: 10vh; 
+    }
+    .archive-timeline {
+        padding: 0 20px;
+    }
+    .archive-card {
+        gap: 30px;
+    }
+}
+
+/* 針對手機螢幕 (768px 以下) */
+@media (max-width: 768px) {
+    
+    .archive-header {
+        height: auto;      
+        padding: 80px 0 40px 0;
+        min-height: 150px; }
+
+    .archive-nav {
+        padding: 20px;
+    }
+
+    .main-title {
+        font-size: 32px;   
+        padding: 0 20px;
+        line-height: 1.2;
+    }
+
+    /* 卡片從兩欄改為單欄 */
+    .archive-card {
+        grid-template-columns: 1fr;
+        margin-bottom: 50px;
+        gap: 15px;
+    }
+
+    .archive-card.reveal-right {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .archive-card.reveal-left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-text {
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 圖片自適應 */
+    .card-images.single, 
+    .card-images.vertical {
+        width: 100%;
+        max-width: 100%;
+    }
+    .card-images img {
+        width: 100%;
+    }
+
+    /* 分隔線縮小 */
+    .card-star-divider {
+        margin-bottom: 50px;
+        letter-spacing: 10px;
+    }
+
+    .archive-footer {
+        padding: 40px 0;
+    }
+}
+
+/* 針對極小螢幕 (480px 以下) */
+@media (max-width: 480px) {
+    .archive-header {
+        padding-top: 70px;
+    }
+    .main-title {
+        font-size: 28px;
+    }
+    .card-title {
+        font-size: 19px;
+    }
+    .card-body {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+}

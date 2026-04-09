@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Archive</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Anonymous+Pro&family=Noto+Serif+TC:wght@300;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="experience.css">
+</head>
+
+<body class="star-archive-theme">
+    <div class="dot-bg"></div>
+    <nav class="archive-nav">
+        <a href="index.html" class="exit-btn">back to home</a>
+    </nav>
+    <header class="archive-header">
+        <h1 class="main-title">Personal Archive</h1>
+    </header>
+    <main class="archive-timeline">
+        <div class="archive-card reveal-left">
+            <div class="card-images vertical">
+                <img src="image/buddy.JPG" alt="Culture 1">
+                <img src="image/buddy (2).JPG" alt="Culture 2">
+            </div>
+            <div class="card-text">
+                <span class="card-tag">#CROSS-CULTURE</span>
+                <h2 class="card-title">Quest 01 ✦ 學伴計畫</h2>
+                <p class="card-body">
+                    我擔任印尼學生的學伴，協助他們熟悉校園環境與日常生活，在面對語言與文化差異時，我透過英文溝通與觀察，逐步引導他們適應校園節奏，並安排導覽與參與聚餐活動以促進交流、增進感情。外籍生也跟我介紹他們的國家文化，才發現跟台灣很不一樣!明明是外國人，很多人中文卻已經很厲害，這段經驗讓我更加理解溝通中「傾聽」的重要，也在團隊合作與跨文化互動中提升了同理心與耐心，很佩服他們生處外地的勇氣與對學習的堅持與熱誠。
+                </p>
+                <div class="card-role">
+                    <h3>我的角色</h3>
+                    <ul>
+                        <li>★ 規劃校園導覽與文化交流活動</li>
+                        <li>★ 以英文協助溝通與資訊引導</li>
+                        <li>★ 培養跨文化理解與團隊協作能力</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-star-divider">★ ★ ★</div>
+        <div class="archive-card reveal-right">
+            <div class="card-text">
+                <span class="card-tag">#SERVICE LEARNING</span>
+                <h2 class="card-title">Quest 02 ✦ 服務學習：貓舍與責任感</h2>
+                <p class="card-body">
+                    在這次的服務學習中，我們前往在地貓舍協助整理與照護，期望改善環境並喚起更多社會關注。我負責現場支援與記錄內容，並與團隊分工規劃清潔、餵食及宣傳素材。看到照護者在困難中仍不辭辛勞地付出，讓我深刻體會到熱情與責任能產生巨大的影響力，能夠為了喜愛的事物付出內心也能充滿幸福，也學會了在團隊合作中主動分擔與反思。
+                </p>
+                <div class="card-role">
+                    <h3>我的角色</h3>
+                    <ul>
+                        <li>★ 現場協助環境整理與貓隻照護</li>
+                        <li>★ 協同規劃宣傳內容</li>
+                        <li>★ 體驗社會責任與團隊協作價值</li>
+                    </ul>
+                </div>
+                <a href="video/service-learning-video.mp4" class="video-btn">View Documentation Video</a>
+            </div>
+            <div class="card-images single">
+                <img src="image/service-learning.PNG" alt="Cat Service">
+            </div>
+        </div>
+        <div class="card-star-divider">★ ★ ★</div>
+        <div class="archive-card reveal-left">
+            <div class="card-images single">
+                <img src="image/part-time.png" alt="Work">
+            </div>
+            <div class="card-text">
+                <span class="card-tag">#WORK ETHIC</span>
+                <h2 class="card-title">Quest 03 ✦ 餐飲業櫃台服務</h2>
+                <p class="card-body">
+                    在高壓的餐飲前線工作一年半，使我具備了極強的問題解決力與動態應變效能。
+                    在櫃台僅 1-2 人的極限人力資源下，面對大量湧入的客流，如何精準化解顧客訴求、同步進行自我心理調適與作業節奏優化，成為我的核心訓練。
+                    我將此經歷視為社會運作的縮影：在資訊不對稱的內、外場間擔任決策橋樑，
+                    並深刻體悟到「同理心」不僅是服務特質，更是建立信任與促進跨部門協作的關鍵技術。
+                </p>
+                <div class="card-role">
+                    <h3>我的角色</h3>
+                    <ul>
+                        <li>★ 營運資源調度：於人力缺口時策略性分配服務順序，極小化等待時間成本。</li>
+                        <li>★ 情緒穩定：於混亂環境中保持標準化作業，確保專業服務品質穩定性。</li>
+                        <li>★ 跨部門資訊對接：明確對接內場與外場需求，優化團隊的運轉效率。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="archive-footer">
+        <div class="end-stars">★ ★ ★ ★ ★</div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.archive-card').forEach(card => observer.observe(card));
+    </script>
+</body>
+
+</html>

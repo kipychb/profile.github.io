@@ -235,42 +235,82 @@ body { background-color: #f8f7f2; font-family: 'Noto Serif TC', serif; color: #4
     font-family: monospace;
 }
 
-/* --- 6. 底部網格樣式 (去背簡約版 - 強化畢冊雙圖) --- */
+/* --- 6. 底部網格樣式 (修正為完整顯示不裁切) --- */
 .side-gallery { 
-    margin-top: 100px; 
+    margin-top: 80px; 
+    padding-bottom: 80px;
 }
+
 .archive-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    gap: 50px; 
-    align-items: flex-start; /* 確保不同高度的項目頂部對齊 */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    align-items: flex-end; /* 讓不同高度的圖片對齊底部文字 */
 }
-.mini-frame { 
-    background: transparent; 
-    border: none; 
-    text-align: center; 
-    transition: transform 0.3s ease;
-}
-.mini-frame:hover {
-    transform: translateY(-8px); 
-}
-.mini-frame img { 
-    width: 100%; 
-    height: auto;
-    padding:0;
-    margin-bottom: 15px; 
-    filter: sepia(20%) contrast(95%); /* 增加日系復古與柔和感 */
-}
-.mini-frame span { 
+
+.mini-frame-link {
+    text-decoration: none;
+    color: inherit;
     display: block;
-    font-size: 14px; 
-    color: #888; 
-    letter-spacing: 1px;
-    font-weight: 300;
 }
-/* 懸停時讓兩張圖都變亮並浮起 */
-.mini-frame.highschool-yearbook:hover .cover-img,
-.mini-frame.highschool-yearbook:hover .spread-img {
-    filter: sepia(0%) contrast(100%);
+
+.mini-frame { 
+    text-align: center; 
+}
+
+/* --- 單張圖片容器：確保完整顯示 --- */
+.img-wrapper {
+    width: 100%;
+    height: 320px; /* 稍微縮小高度，讓整體更精緻 */
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    background: transparent; /* 去除白底，讓它融合在你的條紋背景 */
+}
+
+.img-wrapper img { 
+    max-width: 100%; 
+    max-height: 100%;
+    width: auto; /* 關鍵：不強制撐滿寬度 */
+    height: auto; /* 關鍵：不強制撐滿高度 */
+    object-fit: contain; /* 關鍵：這會讓圖片完整縮放在框框內，不裁切 */
+    filter: sepia(5%) contrast(95%); 
+    transition: 0.4s ease;
+}
+
+/* --- 畢冊雙圖容器：上下排放 --- */
+.double-img-wrapper {
+    width: 100%;
+    height: 320px; /* 跟左邊兩個容器高度保持一致 */
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.double-img-wrapper img {
+    width: 100%;
+    height: calc(50% - 5px); /* 平分高度 */
+    object-fit: contain; /* 畢冊這兩張建議維持 cover 裁切，否則上下排會很空 */
+    filter: sepia(5%) contrast(95%); 
+    transition: 0.4s ease;
+}
+
+/* 懸停效果 */
+.mini-frame-link:hover {
     transform: translateY(-5px);
+}
+
+.mini-frame-link:hover img {
+    filter: sepia(0%) contrast(100%);
+}
+
+.work-title { 
+    display: block;
+    font-size: 15px; 
+    color: #666; 
+    letter-spacing: 0.5px;
+    font-weight: 500;
 }

@@ -1,11 +1,19 @@
+/* --- 1. 背景與全域 (保持不變) --- */
 body {
     margin: 0; padding: 0;
     background: linear-gradient(-45deg, #e0e0e0, #ffffff, #cfcfcf, #f5f5f5);
-    background-size: 400% 400%;
+    background-size: 400% 250%;
     animation: silver-flow 15s ease infinite;
     font-family: 'Cormorant Upright', serif;
     color: #333;
     overflow-x: hidden;
+    height:auto;
+}
+
+@keyframes silver-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 body::before {
@@ -18,124 +26,174 @@ body::before {
     z-index: -1;
     backdrop-filter: blur(1px);
 }
-.window{
+
+.window {
     position: fixed; top: 0; left: 0; width: 200vw; height: 200vh;
     background-image: url("image/window-bg.jpg"); 
     background-size: 1000px; opacity: 0.25; z-index: -999;
 }
 
-/* 3. 佈導航與容器 */
-.gallery-nav {
-    position: fixed;
-    top: 0; width: 100%; padding: 40px;
-    display: flex; justify-content: space-between; z-index: 100;
+/* --- 2. 導航 (修正 Back Home 位置) --- */
+.gallery-nav { 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    padding: 40px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start;
+    z-index: 100; 
+    box-sizing: border-box;
 }
 
-.gallery-title { font-size: 35px; letter-spacing: 3px; color: #a34848; margin: 0; }
+.gallery-title { font-size: 35px; color: #a34848; line-height: 1.2; margin: 0; }
 
-.back-home {
-    position: fixed; top: 50px; right: 30px;
-    text-decoration: none; display: flex; align-items: center; gap: 12px; z-index: 100;
+.back-home { 
+    text-decoration: none; 
+    color: #a34848; 
+    font-size: 23px; 
+    font-style: italic;
+    padding-right: 20px; 
+    font-weight: 500;
 }
-.back-home span { color: #a34848; font-size: 25px; font-style: italic; letter-spacing: 1px; }
 
+/* --- 3. 容器與軌道 --- */
 .linear-quest-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 150px 50px 250px;
+    padding: 80px 50px;
     position: relative;
-    border-left: 1.5px solid #d1d1d1; 
-    margin-left: 20%; 
 }
 
-.vertical-path { display: flex; flex-direction: column; gap: 120px;
-     padding-left: 60px;  }
+.linear-quest-container::before {
+    content: "";
+    position: absolute;
+    left: 150px; 
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    background-color: #7b7878;
+    z-index: 1;
+}
 
-/* 4. 關卡內容樣式 */
-.quest-node { display: flex; align-items: flex-start; gap: 65px; transition: 0.3s; }
+.vertical-path { 
+    display: flex; 
+    flex-direction: column; 
+    padding-left: 250px; 
+    position: relative;
+    z-index: 2;
+}
 
-.node-art img {
-    width: 160px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border: 1px solid #fff;
-    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.5), 8px 8px 0px rgba(163, 72, 72, 0.05);
+/* --- 4. 節點排版 (修正圖片對齊文字中間) --- */
+.quest-node { 
+    display: flex; 
+    align-items: center; 
+    gap: 50px; 
+    position: relative;
+    padding: 60px 0; 
+}
+
+.path-star-container {
+    position: absolute;
+    left: -150px; 
+    top: 0;
+    height: 100%;
+    width: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.path-star {
+    z-index: 10;
+    opacity: 0.3; 
     transition: 0.5s ease;
 }
 
-.quest-node:hover .node-art img { transform: translateY(-8px) scale(1.02); border-color: #d4af37; }
-
-.node-content{
-   position: relative;
-   top:-25px;
-}
-.node-title { font-size: 24px; color: #a34848; margin-bottom: 10px; }
-
-.stars {
-    color: #52524d; letter-spacing: 5px; font-size: 16px;
-    text-shadow: 10px  10px 20px rgba(247, 231, 113, 0.6); 
+.path-star img {
+    width: 45px;
+    height: auto;
+    display: block;
 }
 
-/* 5. 🏃 */
+.path-star.active {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #d4af37) brightness(1.1);
+    animation: star-glow-img 2.5s infinite ease-in-out;
+}
+
+@keyframes star-glow-img {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15) rotate(10deg); }
+}
+
+/* --- 5. 圖片與內容 (縮減文字間距) --- */
+.node-art img {
+    width: 160px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: block;
+}
+
+.node-content {
+    flex: 1;
+}
+
+.node-title { font-size: 26px; 
+    color: #a34848; 
+    margin: 0 0 15px 0; 
+    font-weight: 700; }
+
+.stat-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px;
+}
+
+.stat-group {
+    margin: 0;
+}
+
+.stat { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    font-size: 19px; 
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.stars { color: #52524d; letter-spacing: 2px; font-size: 16px; }
+
+.stat-desc { 
+    font-size: 13px; 
+    color: #a34848; 
+    opacity: 0.8; 
+    line-height: 1.4; 
+    margin: 2px 0 0 0; 
+    font-weight: 420;
+}
+
+.stat-desc::before { content: "⌞"; margin-right: 8px; }
+
+/* --- 6. 貓咪行走 --- */
 .player-character {
     position: absolute;
-    left: -35px; 
+    left: 115px; 
     width: 70px;
     z-index: 100;
-    animation: walk-down-steady 25s infinite linear;
+    animation: walk-down-steady 30s infinite linear;
 }
 
-.char-img { width: 100%; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15)); }
+.char-img { width: 100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
 
 @keyframes walk-down-steady {
-    0% { top: 180px; transform: translateY(0); }
-    2%, 6%, 10%, 14%, 18%, 22%, 26%, 30%, 34%, 38%, 42%, 46%, 50%, 54%, 58%, 62%, 66%, 70%, 74%, 78%, 82%, 86%, 90%, 94%, 98% 
-    { transform: translateY(-5px); }
-    4%, 8%, 12%, 16%, 20%, 24%, 28%, 32%, 36%, 40%, 44%, 48%, 52%, 56%, 60%, 64%, 68%, 72%, 76%, 80%, 84%, 88%, 92%, 96%, 100% 
-    { transform: translateY(0); }
-    100% { top: 1500px; } 
+    0% { top: 0; transform: translateY(0); }
+    100% { top: 100%; } 
 }
 
-.tbc-section {
-    position: relative;
-    text-align: left;
-}
-.tbc-title { font-size: 32px; 
-    color: #aaa; 
-    padding:0; }
-
-.target-star {
-    position: absolute;
-    left: -135.75px; 
-    top: 31px; 
-    width: 50px; height: 50px;
-    z-index: 5;
-    animation: star-react 25s infinite linear;
-}
-
-.target-star img{
-    width:100%;
-}
-
-@keyframes star-react {
-    /* 0% 到 98.5% 之間完全靜止，屏息等待碰撞 */
-    0%, 98.5% { 
-        transform: rotate(0deg) scale(1); 
-        text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-        color: #d4af37;
-    }
-
-    /* 99%：碰撞瞬間！極速旋轉 1 圈 + 放大 + 變白光 */
-    99% { 
-        transform: rotate(360deg) scale(1.8); 
-        color: #ffffff; 
-        text-shadow: 0 0 30px #ffffff, 0 0 50px #d4af37; 
-    }
-
-    /* 100%：迅速回彈到原狀，但保留一點點旋轉後的餘韻 */
-    100% { 
-        transform: rotate(360deg) scale(1); 
-        color: #d4af37;
-        text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-    }
-}
+/* --- 7. TBC --- */
+.tbc-section { padding: 80px 0; }
+.tbc-title { font-size: 32px; color: #666; font-style: italic; margin: 0; opacity: 0.8;}

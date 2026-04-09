@@ -62,7 +62,6 @@ body::after {
     z-index: 1000;
 }
 
-.nav-left { display: flex; flex-direction: column; gap: 5px; }
 .nav-serial { 
     font-size: 10px; 
     letter-spacing: 3px; 

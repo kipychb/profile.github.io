@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Era ✦</title>
+    <title>Future Designer | AI Era ✦</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Noto+Serif+TC:wght@300;500&display=swap"
@@ -14,10 +14,6 @@
 
 <body id="main-body">
     <nav class="gallery-nav">
-        <div class="nav-left">
-            <span class="nav-serial">NO. 2026-IM-DESIGN</span>
-            <h1 class="gallery-title">CYBER BLING</h1>
-        </div>
         <div class="nav-right">
             <a href="index.html" class="back-home">
                 <i class="fa-solid fa-house"></i>
@@ -49,28 +45,34 @@
                     <span class="label">ADJUST THE MODE</span>
                 </div>
                 <input type="range" min="0" max="100" value="50" class="cyber-slider" id="balance-slider">
-
             </div>
             <p class="hint">Adjust the refraction of Kars' perspective</p>
         </section>
 
         <section class="essay-section">
             <article class="essay-card">
+                <div class="essay-header">
+                    <h2 class="essay-main-title">在 AI 浪潮下，我想成為一名「理解人」的網頁設計師</h2>
+                </div>
+
                 <div class="essay-content">
-                    身為資管系的學生，我理解代碼是冰冷的邏輯，但在 UI/UX 的世界裡，我選擇用水鑽的折射與磨砂銀的清透，為數據賦予溫度。這不只是一場網頁實驗，而是我如何在資訊架構中植入藝術靈魂的過程——讓繁瑣的
-                    JSP 與資料庫邏輯，轉化為視覺上的優雅共鳴。
+                    <p>在這個科技快速發展的時代，AI 已經不再只是工具，「要不要使用 AI」是常見的議題，但我認為更重要的問題是：「我們該如何使用它，才能讓自己變得更好？」</p>
+
+                    <p>以我<strong>未來想成為網頁設計師</strong>為例，AI 雖然能生成程式碼、提供靈感，甚至完成許多過去需要專業技術的工作，但這也讓我開始思考：當 AI
+                        什麼都能做時，我存在的意義是什麼？真正的差異不在於「會不會寫程式」，而是在於「為誰設計、為什麼這樣設計」。我認為，人類的價值在於能從生活中觀察細節，並將感受轉化為設計。一個好的網頁不只是功能完整，更要讓使用者感到被理解——這種<strong>「同理心」</strong>是目前
+                        AI 難以完全取代的。
+                    <p>因此，我對未來的期許是：不與 AI 競爭，而是學會與它合作。讓 AI
+                        完成重複性的技術工作，而我則專注於<strong>使用者體驗設計與創意發想</strong>。希望自己不要當一個「寫網頁的人」，更要成為一個「設計體驗的人」，在人與科技之間，創造更溫暖的連結。
+                        在 AI 的時代裡，我希望自己不是被浪潮推著走，而是學會站在浪尖，找到屬於自己的方向。</p>
                 </div>
             </article>
         </section>
-
-
     </main>
 
     <script>
         const slider = document.getElementById('balance-slider');
         const logicText = document.getElementById('logic-text');
         const emotionText = document.getElementById('emotion-text');
-        const title = document.getElementById('essay-title');
 
         slider.addEventListener('input', (e) => {
             const val = e.target.value;
@@ -79,7 +81,6 @@
 
             logicText.style.opacity = logicOpacity;
             emotionText.style.opacity = emotionOpacity;
-
         });
     </script>
 </body>
