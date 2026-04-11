@@ -1,4 +1,3 @@
-/* --- 1. 背景與全域 --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: #f8f7f2; font-family: 'Noto Serif TC', serif; color: #444; overflow-x: hidden; }
 
@@ -14,7 +13,6 @@ body { background-color: #f8f7f2; font-family: 'Noto Serif TC', serif; color: #4
     filter: blur(80px); z-index: -2;
 }
 
-/* --- 2. 右上角導覽列 --- */
 .gallery-nav { 
     position: absolute; 
     top: 50px; 
@@ -25,58 +23,40 @@ body { background-color: #f8f7f2; font-family: 'Noto Serif TC', serif; color: #4
     gap: 8px;
     z-index: 1000; 
 }
-.nav-link { color: #a34848; 
-    text-decoration: none;
-     font-size: 14px; 
-     letter-spacing: 2px; font-weight: bold;
-     transition: 0.3s}
-
+.nav-link { color: #a34848; text-decoration: none; 
+font-size: 14px; letter-spacing: 2px; 
+font-weight: bold; transition: 0.3s; }
 .nav-link:hover { opacity: 0.8; }
-.gallery-title { font-family: 'Cormorant Upright', serif; font-size:55px; color: #333; }
+.gallery-title { font-family: 'Cormorant Upright', serif; font-size: 55px; color: #333; }
 
-/* --- 3. 左上角固定背心動畫 --- */
-
+/* 裁縫動畫設定*/
+.vest-corner-animation { position: relative; z-index: 1001; }
 .button-on-vest { position: absolute; width: 35px; filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2)); }
 .button-on-vest img { width: 100%; height: auto; }
-
 .btn-1 { top: 40px; left: 40px; transform: rotate(-10deg); animation: button-shake 4s infinite 0s; }
 .btn-2 { top: 90px; left: 30px; transform: rotate(15deg); animation: button-shake 4s infinite 1.33s; }
 .btn-3 { top: 140px; left: 20px; transform: rotate(-5deg); animation: button-shake 4s infinite 2.66s; }
-
-.active-needle {
-    position: absolute; width: 2px; height: 40px;
-    background: linear-gradient(to bottom, #ddd, #fff);
-    box-shadow: 0 0 5px #fff;
-    z-index: 100;
-    animation: sew-between-buttons 4s ease-in-out infinite;
-}
-
-.golden-thread {
-    position: absolute; top: -200px; left: 50%; width: 1px; height: 200px;
-    border-left: 1.5px dashed rgba(163, 72, 72, 0.6);
-}
+.active-needle { position: absolute; width: 2px; height: 40px; background: linear-gradient(to bottom, #ddd, #fff); box-shadow: 0 0 5px #fff; z-index: 100; animation: sew-between-buttons 4s ease-in-out infinite; }
+.golden-thread { position: absolute; top: -200px; left: 50%; width: 1px; height: 200px; border-left: 1.5px dashed rgba(163, 72, 72, 0.6); }
 
 @keyframes sew-between-buttons {
     0%, 100% { top: 60px; left: 55px; transform: rotate(20deg); }
     33% { top: 95px; left: 45px; transform: rotate(-10deg); }
     66% { top: 145px; left: 35px; transform: rotate(5deg); }
 }
+@keyframes button-shake { 0%, 10%, 100% { transform: scale(1) rotate(-10deg); } 5% { transform: scale(1.1) rotate(0deg); } }
 
-@keyframes button-shake {
-    0%, 10%, 100% { transform: scale(1) rotate(-10deg); }
-    5% { transform: scale(1.1) rotate(0deg); }
-}
-
-/* --- 4. 畫框與內容排版 --- */
+/* 主容器佈局 */
 .gallery-container { max-width: 1200px; margin: 0 auto; padding-top: 150px; padding-bottom: 30px; }
-.hall-label {
-    font-family: 'Cormorant Upright', serif; font-size: 1.3rem; color: #a7a6a6;
-    margin-bottom: 55px; text-align: center; letter-spacing: 10px;
-}
-.masterpiece { display: flex; align-items: center; gap: 80px; margin-bottom: 150px; cursor: pointer; }
+.hall-label { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; color: #a7a6a6; margin-bottom: 55px; text-align: center; letter-spacing: 10px; }
+
+.masterpiece { display: flex; align-items: flex-start; 
+gap: 60px; margin-bottom: 150px; cursor: pointer; width: 100%; }
 .masterpiece.reverse { flex-direction: row-reverse; }
+
+
 .frame.fabric-lace {
-    flex: 1.5;
+    flex: 0 0 58%; 
     position: relative;
     padding: 30px;
     background-image: 
@@ -86,74 +66,88 @@ body { background-color: #f8f7f2; font-family: 'Noto Serif TC', serif; color: #4
     box-shadow: 5px 5px 20px rgba(0,0,0,0.05);
 }
 
-.video-clipper { width: 100%; height: 100%; overflow: hidden; display: block; }
-.project-video { 
-    width: 100%; height: 100%; display: block; object-fit: cover; 
-    transform: scaleY(1.08); transition: 0.5s ease; opacity: 0.9;
-}
+.video-clipper { width: 100%; overflow: hidden; display: block; }
 
+
+.project-video { 
+    width: 100%; height: 100%; display: block; 
+    object-fit: cover; 
+    transform: scaleY(1.08); 
+    transition: 0.5s ease; 
+    opacity: 0.9;
+}
 .masterpiece:hover .project-video { opacity: 1; }
 
-/* --- 5. 縫紉布標文字區 (優化精緻布標感) --- */
+.branding-showcase {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; 
+    margin-top: 40px; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.showcase-item {
+    flex: 0 1 auto;
+    text-align: center;
+}
+
+.showcase-item img {
+    height: 250px; 
+    width: auto;
+    max-width: 220px; 
+    object-fit: contain;
+    margin-bottom: 8px;
+    filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.12)); 
+    transition: 0.4s ease;
+}
+
+.showcase-item:hover img {
+    filter: drop-shadow(3px 3px 12px rgba(163, 72, 72, 0.2));
+    transform: translateY(-8px);
+}
+
+.showcase-item span {
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+
 .fabric-tag {
-    flex: 0.8; /* 縮小比例，讓它看起來像標籤而非主體 */
+    flex: 1;
     position: relative; 
     padding: 25px 30px;
     background: rgba(250, 248, 245, 0.98); 
-    /* 雙層邊框：內虛線(縫線) + 外實線(剪裁線) */
     border: 1px solid rgba(163, 72, 72, 0.1);
     outline: 1.5px dashed rgba(163, 72, 72, 0.2);
     outline-offset: -8px; 
-    
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
-    align-items: flex-start;
-    box-shadow: 3px 3px 12px rgba(0,0,0,0.03); /* 輕微浮起感 */
+    justify-content: center;
+    box-shadow: 3px 3px 12px rgba(0,0,0,0.03); 
 }
 
-/* 讓標題更像印刷上去的 */
-.silver-text { 
-    font-size: 20px; /* 調小標題 */
-    letter-spacing: 1px;
-    font-weight: 600; 
-    margin-bottom: 5px; 
-    color: #222; 
-}
+.silver-text { font-size: 20px; letter-spacing: 1px; 
+font-weight: 600; margin-bottom: 5px; color: #444; }
+.tech-tag { color: #a34848; font-size: 11px; 
+letter-spacing: 1.5px; margin-bottom: 12px; 
+text-transform: uppercase; }
 
-.tech-tag { 
-    color: #a34848; 
-    font-size: 11px; /* 極細緻小字 */
-    letter-spacing: 1.5px; 
-    margin-bottom: 12px; 
-    text-transform: uppercase;
-}
+.description p { color: #777; line-height: 1.5; 
+font-size: 14px; text-align: justify; }
+.desc-intro { margin-bottom: 12px; }
+.desc-highlight p { margin-top: 12px; font-weight: bold; }
+.description ul { list-style: none; padding-left: 0; 
+margin: 10px 0; }
+.description li { color: #777; line-height: 1.5; 
+font-size: 14px; margin-bottom: 8px; position: 
+relative; padding-left: 15px; }
 
-/* 針對條列點內容進行微型化 */
-.description p, .description li { 
-    color: #777; 
-    line-height: 1.5; /* 緊湊一點 */
-    font-size: 14px; /* 關鍵：縮小字體才有布標質感 */
-    text-align: justify;
-}
-
-.description ul {
-    margin: 10px 0;
-}
-
-.description li {
-    margin-bottom: 5px !important;
-    position: relative;
-    padding-left: 15px;
-}
-
-/* 自定義小點，用簡單的短橫線代替，更像針縫 */
-.description li::before {
-    content: "-";
-    position: absolute;
-    left: 0;
-    color: #a34848;
-}
 
 .view-project-link {
     margin-top: 10px;
@@ -161,156 +155,117 @@ body { background-color: #f8f7f2; font-family: 'Noto Serif TC', serif; color: #4
     color: #a34848; 
     text-decoration: none; 
     font-weight: bold;
-    border-bottom: 1px solid rgba(163, 72, 72, 0.3); 
     transition: 0.3s;
 }
 
-/* 裝飾性的小圓點（像鈕扣孔或固定針） */
-.button-deco {
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
-    width: 8px; 
-    height: 8px; 
-    background: #d4af37; 
-    border-radius: 50%; 
-    opacity: 0.7;
-}
 
-/* --- 大氣去背展示組樣式 --- */
-.branding-showcase {
-    display: flex;
-    gap: 30px; /* 增加間距，更顯大氣 */
-    margin-top: 25px; /* 增加與影片的距離 */
-}
+/* 其他作品集 */
+.side-gallery { margin-top: 80px; padding-bottom: 50px; }
+.archive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: flex-end; }
+.mini-frame-link { text-decoration: none; color: inherit; display: block; transition: 0.3s; }
+.mini-frame { text-align: center; }
+.img-wrapper { width: 100%; height: 320px; overflow: hidden; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; }
+.img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; filter: sepia(5%) contrast(95%); transition: 0.4s ease; }
+.double-img-wrapper { width: 100%; height: 320px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.double-img-wrapper img { width: 100%; height: calc(50% - 5px); object-fit: contain; filter: sepia(5%); transition: 0.4s ease; }
+.mini-frame-link:hover { transform: translateY(-5px); }
+.work-title { display: block; font-size: 15px; color: #666; letter-spacing: 0.5px; font-weight: 500; }
 
-.showcase-item {
-    background: transparent; /* 關鍵：去除白色背景 */
-    padding: 0; /* 去除內距 */
-    border: none; /* 去除邊框 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1; /* 平分寬度 */
-    text-align: center;
-}
 
-.showcase-item img {
-    width: 100%; /* 寬度撐滿父元素 */
-    height: auto;
-    object-fit: contain; /* 保持比例 */
-    margin-bottom: 12px;
-    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.08)); /* 加上輕微陰影，讓它浮在布料上 */
-    transition: 0.4s ease;
-}
+/* RWD */
 
-/* 懸停時讓圖片稍微放大並變亮 */
-.showcase-item:hover img {
-    filter: drop-shadow(3px 3px 8px rgba(163, 72, 72, 0.1));
-    transform: translateY(-5px);
-}
+@media (max-width: 768px) {
+    .gallery-container {
+        padding-top: 150px; 
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 
-.showcase-item span {
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 300;
-}
+    .gallery-nav {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        left: 0;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
 
-/* 額外的設計規範小標籤 (右側布標內) - 維持精緻感 */
-.spec-label {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(163, 72, 72, 0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
+    .gallery-title {
+        font-size: 45px; 
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+    }
 
-.spec-label span {
-    font-size: 10px;
-    color: #bbb;
-    font-family: monospace;
-}
+    .nav-link {
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
 
-/* --- 6. 底部網格樣式 (修正為完整顯示不裁切) --- */
-.side-gallery { 
-    margin-top: 80px; 
-    padding-bottom: 80px;
-}
+  
+    .vest-corner-animation {
+        transform: scale(0.6);
+        transform-origin: top left;
+        z-index: 1001;
+    }
 
-.archive-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-    align-items: flex-end; /* 讓不同高度的圖片對齊底部文字 */
-}
+    .masterpiece, .masterpiece.reverse {
+        flex-direction: column !important; 
+        gap: 30px; 
+        margin-bottom: 50px;
+        
+    }
 
-.mini-frame-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
+    .frame.fabric-lace {
+        flex: none;
+        width: 100%;
+        padding: 20px; 
+    }
 
-.mini-frame { 
-    text-align: center; 
-}
+    .fabric-tag {
+        flex: none;
+        width: 100%;
+        padding: 30px 20px;
+        margin-top: -10px; 
+    }
 
-/* --- 單張圖片容器：確保完整顯示 --- */
-.img-wrapper {
-    width: 100%;
-    height: 320px; /* 稍微縮小高度，讓整體更精緻 */
-    overflow: hidden;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center; /* 垂直置中 */
-    justify-content: center; /* 水平置中 */
-    background: transparent; /* 去除白底，讓它融合在你的條紋背景 */
-}
+    .silver-text {
+        font-size: 22px; 
+        color: #333;
+    }
 
-.img-wrapper img { 
-    max-width: 100%; 
-    max-height: 100%;
-    width: auto; /* 關鍵：不強制撐滿寬度 */
-    height: auto; /* 關鍵：不強制撐滿高度 */
-    object-fit: contain; /* 關鍵：這會讓圖片完整縮放在框框內，不裁切 */
-    filter: sepia(5%) contrast(95%); 
-    transition: 0.4s ease;
-}
+    .description p, .description li {
+        font-size: 15px; 
+        line-height: 1.6;
+    }
 
-/* --- 畢冊雙圖容器：上下排放 --- */
-.double-img-wrapper {
-    width: 100%;
-    height: 320px; /* 跟左邊兩個容器高度保持一致 */
-    display: flex;
-    flex-direction: column; 
-    gap: 10px;
-    margin-bottom: 12px;
-}
+    .branding-showcase {
+        flex-direction: column; 
+        gap: 10px;
+    }
 
-.double-img-wrapper img {
-    width: 100%;
-    height: calc(50% - 5px); /* 平分高度 */
-    object-fit: contain; /* 畢冊這兩張建議維持 cover 裁切，否則上下排會很空 */
-    filter: sepia(5%) contrast(95%); 
-    transition: 0.4s ease;
-}
+    .showcase-item img {
+        max-width: 80%; 
+    }
 
-/* 懸停效果 */
-.mini-frame-link:hover {
-    transform: translateY(-5px);
-}
+    .archive-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 
-.mini-frame-link:hover img {
-    filter: sepia(0%) contrast(100%);
-}
+    .img-wrapper, .double-img-wrapper {
+        height: 250px; 
+    }
 
-.work-title { 
-    display: block;
-    font-size: 15px; 
-    color: #666; 
-    letter-spacing: 0.5px;
-    font-weight: 500;
+    .hall-label {
+        font-size: 1rem;
+        letter-spacing: 6px;
+        margin-bottom: 30px;
+    }
+
+   
+    .project-video {
+        transform: scaleY(1.08);
+    }
 }

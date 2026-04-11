@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY skills | Kars' Quest</title>
+    <title>MY skills</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@500;700&family=Noto+Serif+TC:wght@300;500&display=swap"
         rel="stylesheet">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="stat-group">
                             <div class="stat"><span>JavaScript</span><span class="stars">★★★★☆</span></div>
-                            <p class="stat-desc">實作購物車邏輯與互動特效。</p>
+                            <p class="stat-desc">實作購物車邏輯與多個互動特效。</p>
                         </div>
                         <div class="stat-group">
                             <div class="stat"><span>Python</span><span class="stars">★★★☆☆</span></div>
@@ -69,7 +69,7 @@
                     <div class="stat-list">
                         <div class="stat-group">
                             <div class="stat"><span>UI/UX</span><span class="stars">★★★★☆</span></div>
-                            <p class="stat-desc">優化購物路徑，提升數位品牌體驗。</p>
+                            <p class="stat-desc">優化網頁功能，提升數位品牌體驗。</p>
                         </div>
                         <div class="stat-group">
                             <div class="stat"><span>Figma/Ai</span><span class="stars">★★★★★</span></div>
@@ -96,7 +96,7 @@
                     <h3 class="node-title">Stage 03 ✦ 軟實力</h3>
                     <div class="stat-list">
                         <div class="stat-group">
-                            <div class="stat"><span>Teamwork</span><span class="stars">★★★★★</span></div>
+                            <div class="stat"><span>Teamwork</span><span class="stars">★★★★☆</span></div>
                             <p class="stat-desc">擔任組長，協調開發與設計需求。</p>
                         </div>
                         <div class="stat-group">
@@ -104,7 +104,7 @@
                             <p class="stat-desc">具跨文化交流經驗</p>
                         </div>
                         <div class="stat-group">
-                            <div class="stat"><span>Problem Solving</span><span class="stars">★★★★☆</span></div>
+                            <div class="stat"><span>Problem Solving</span><span class="stars">★★★★★</span></div>
                             <p class="stat-desc">餐飲打工經驗，學習解決客人需求及問題。</p>
                         </div>
                     </div>
@@ -115,14 +115,71 @@
                 <h2 class="tbc-title">To Be Continued ...</h2>
             </section>
 
-            <section class="pipe-section">
-                <div class="mario-pipe">
-                    <div class="pipe-top"></div>
-                    <div class="pipe-body"></div>
-                </div>
-            </section>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const player = document.querySelector('.player-character');
+                    // 偵測星星圖片本身，讓判定範圍更精準
+                    const stars = document.querySelectorAll('.path-star img');
+
+                    if (!player || stars.length === 0) return;
+
+                    function checkCollision() {
+                        // 取得貓咪相對於視窗的位置
+                        const playerRect = player.getBoundingClientRect();
+                        // 取貓咪中心點的 Y 坐標
+                        const playerCenterY = playerRect.top + (playerRect.height / 2);
+
+                        stars.forEach(starImg => {
+                            const container = starImg.closest('.path-star-container');
+
+                            // 如果已經亮了就跳過計算，維持「一直亮著」
+                            if (container.classList.contains('active')) return;
+
+                            const starRect = starImg.getBoundingClientRect();
+
+                            // 碰撞判定：當貓咪中心點進入星星圖片的高度區間
+                            if (playerCenterY >= starRect.top && playerCenterY <= starRect.bottom) {
+                                container.classList.add('active');
+                            }
+                        });
+
+                        // 每一幀持續偵測
+                        requestAnimationFrame(checkCollision);
+                    }
+
+                    requestAnimationFrame(checkCollision);
+                });
 
 
+                document.addEventListener('DOMContentLoaded', function () {
+                    const player = document.querySelector('.player-character');
+                    const stars = document.querySelectorAll('.path-star img');
+
+                    if (!player || stars.length === 0) return;
+
+                    function checkCollision() {
+                        const playerRect = player.getBoundingClientRect();
+                        // 抓貓咪中心點的 Y 坐標
+                        const playerCenterY = playerRect.top + (playerRect.height / 2);
+
+                        stars.forEach(starImg => {
+                            const container = starImg.closest('.path-star-container');
+
+                            // 如果已經亮了就不用重複算，達成一直亮著的效果
+                            if (container.classList.contains('active')) return;
+
+                            const starRect = starImg.getBoundingClientRect();
+
+                            // 只有當貓咪中心點進入「星星圖片本身」的高度範圍才亮起
+                            if (playerCenterY >= starRect.top && playerCenterY <= starRect.bottom) {
+                                container.classList.add('active');
+                            }
+                        });
+                        requestAnimationFrame(checkCollision);
+                    }
+                    requestAnimationFrame(checkCollision);
+                })
+            </script>
         </div>
     </main>
 </body>

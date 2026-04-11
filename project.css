@@ -1,4 +1,3 @@
-/* --- 1. 核心視覺：織物背景與全域 --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
@@ -8,7 +7,6 @@ body {
     overflow-x: hidden; 
 }
 
-/* 織物背景與雜訊 (全域套用) */
 .grainy-bg {
     position: fixed; 
     top: 0; left: 0; 
@@ -32,18 +30,78 @@ body::after {
     mix-blend-mode: multiply;
 }
 
-/* --- 2. 佈局容器與載入動畫 --- */
+.nav-back {
+    position: fixed;
+    top: 20px; left: 30px;
+    z-index: 1000;
+}
+
+.nav-back a {
+    text-decoration: none;
+    color: #a34848;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+
+
+
+.img-standard, 
+.video-no-frame video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.external-link-box {
+    margin-top: 20px;
+}
+
+
+.gallery-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 50px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.grid-left {
+    grid-column: 2 / 9;
+    width: fit-content;
+    justify-self: start;
+}
+
+.grid-right {
+    grid-column: 8 / 13;
+    width: fit-content;
+    justify-self: end;
+}
+
+.grid-center {
+    grid-column: 4 / 11;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.grid-full {
+    grid-column: 1 / 13;
+    text-align: center;
+    margin-top: 50px;
+}
+
 .project-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 120px 60px;
+    padding: 90px 60px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .project-container.loaded { opacity: 1; transform: translateY(0); }
 
-/* --- 3. 標題與引言區 (統一排版) --- */
+
 .project-header {
     margin-bottom: 180px;
     display: flex;
@@ -58,7 +116,7 @@ body::after {
     font-weight: 800;
     font-style: italic;
     line-height: 0.85;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -68,14 +126,13 @@ body::after {
     width: 100%;
 }
 
-/* 所有的引言文字都共用這個排版架構 */
 .editorial-text {
     grid-column: 4 / 10; 
     padding-left: 40px;
-    border-left: 1.5px solid transparent; /* 預設透明 */
+    border-left: 1.5px solid transparent; 
 }
 
-/* --- 專案個別顏色設定 --- */
+/* 專案個別顏色設定  */
 /* 專案1：母親節 (紅色系) */
 .p1-border { border-left-color: #a34848; }
 .p1-tag { color: #a34848; }
@@ -111,25 +168,24 @@ body::after {
     text-align: justify;
 }
 
-/* --- 4. 12 欄位畫廊與圖片 --- */
 .image-gallery {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 30px;
 }
 
 .gallery-row {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 40px;
+    gap: 30px;
     align-items: flex-start;
 }
 
-.art-piece {
-    width: fit-content; /* 關鍵：確保容器縮小到圖片寬度 */
+.art-piece, .art-piece grid-left {
+    width: fit-content; 
 }
 
-.art-piece img {
+.art-piece img,.art-piece grid-left img{
     max-width: 350px;
     width: 100%;
     height: auto;
@@ -141,7 +197,7 @@ body::after {
 .art-piece img:hover { transform: scale(1.03); }
 
 .caption {
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 13px;
     letter-spacing: 2px;
     color: #666;
@@ -150,8 +206,7 @@ body::after {
 
 .caption strong { color: #333; letter-spacing: 1px; }
 
-/* --- 5. 影片與按鈕 (統一樣式) --- */
-/* 移除邊框與背景，專為直式影片設計 */
+/* 影片 */
 .video-container {
     grid-column: 1 / 13;
     text-align: center;
@@ -160,12 +215,12 @@ body::after {
 
 .video-no-frame {
     width: 100%;
-    max-width: 350px; /* 直式影片建議寬度，與妳的圖片大小一致 */
+    max-width: 350px; 
     margin: 0 auto;
-    background: none; /* 移除背景 */
-    padding: 0;      /* 移除內距 */
-    border: none;    /* 移除邊框 */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* 僅保留輕微陰影增加立體感 */
+    background: none;
+    padding: 0;     
+    border: none;    
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
 }
 
 .video-no-frame video {
@@ -173,7 +228,6 @@ body::after {
     display: block;
 }
 
-/* 找到這段並修改 max-width */
 .video-frame, .video-wrapper {
     width: 100%;
     max-width: 960px; 
@@ -189,75 +243,27 @@ video { width: 100%; display: block; }
 .external-link-box {
     grid-column: 1 / 13;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .btn-visit {
     display: inline-block;
-    padding: 15px 40px;
+    margin-top: 15px;     
+    padding: 8px 18px;   
     border: 1px solid #a34848;
     color: #a34848;
     text-decoration: none;
-    letter-spacing: 3px;
-    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-size: 11px;       
     font-weight: bold;
-    transition: 0.4s;
+    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-transform: uppercase;
 }
 
 .btn-visit:hover {
     background: #a34848;
     color: #fff;
-}
-
-/* --- 6. 導覽列 --- */
-.nav-back {
-    position: fixed;
-    top: 40px; left: 40px;
-    z-index: 1000;
-}
-
-.nav-back a {
-    text-decoration: none;
-    color: #a34848;
-    font-size: 16px;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-/* --- 佈局輔助類 (用於替代行內 style) --- */
-
-/* 基礎 Row 設定：確保 12 欄位格線生效 */
-.gallery-row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 50px;
-    align-items: flex-start;
-    width: 100%;
-}
-
-/* 元素位置控制 */
-.grid-left {
-    grid-column: 2 / 9;
-    width: fit-content;
-    justify-self: start;
-}
-
-.grid-right {
-    grid-column: 8 / 13;
-    width: fit-content;
-    justify-self: end;
-}
-
-.grid-center {
-    grid-column: 4 / 11;
-    width: fit-content;
-    margin: 0 auto;
-}
-
-.grid-full {
-    grid-column: 1 / 13;
-    text-align: center;
-    margin-top: 50px;
+    transform: translateY(-2px); 
 }
 
 /* 圖片與影片尺寸標準化 */
@@ -273,15 +279,117 @@ video { width: 100%; display: block; }
     width: 100%;
 }
 
-/* 文字微調類 */
 .text-left { text-align: left; }
-.mt-20 { margin-top: 20px; }
-.mt-0 { margin-top: 20px; }
+.mt-20 { margin-top: 10px; }
+.mt-0 { margin-top: 15px; }
 
-/* 專案按鈕顏色設定 */
-.btn-p1 { border-color: #a34848; color: #a34848; } /* 母親節 */
+.btn-p1 { border-color: #a34848; color: #a34848; } 
 .btn-p1:hover { background: #a34848; color: #fff; }
 
 
-.btn-p3 { border-color: #3c3c77; color: #3c3c77; background-color: aliceblue; } /* 畢冊 */
+.btn-p3 { border-color: #3c3c77; color: #3c3c77; background-color: aliceblue; } 
 .btn-p3:hover { background: #3c3c77; color: #fff; }
+
+/*RWD*/
+
+@media (max-width: 768px) {
+    .project-container {
+        padding: 80px 20px 40px 20px;
+        opacity: 1; 
+    }
+
+    .project-header {
+        display: block !important; 
+        text-align: left !important;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+    .project-title {
+        font-size: 50px !important;
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        line-height: 1;
+        display: block !important;
+    }
+
+    .editorial-row {
+        display: block !important;
+    }
+
+    .editorial-text {
+        grid-column: auto !important;
+        width: 100% !important;
+        padding-left: 20px !important;
+        margin: 0 0 30px 0 !important;
+        border-left-style: solid !important;
+        border-left-width: 1.8px !important;
+        border-left-color: inherit !important; 
+    }
+
+    .p1-border { border-left-color: #a34848 !important; }
+    .p2-border { border-left-color: rgb(35, 84, 35) !important; }
+    .p3-border { border-left-color: #3c3c77 !important; }
+
+    .gallery-row {
+        display: block !important;
+    }
+
+    .grid-left, .grid-right, .grid-center, .grid-full {
+        grid-column: auto !important;
+        width: 100% !important;
+        margin: 0 0 40px 0 !important;
+        text-align: left !important;
+    }
+
+    .art-piece {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .art-piece img, .img-standard, .video-no-frame {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    .video-container {
+        text-align: left !important;
+        margin: 40px 0;
+    }
+
+    .nav-back {
+        top: 20px;
+        left: 20px;
+        position: absolute;
+    }
+}
+
+@media (max-width: 768px) {
+    .external-link-box.grid-full {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;   
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        grid-column: 1 / -1 !important;  
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
+
+    .btn-visit {
+        display: inline-block !important;
+        margin: 0 auto !important;         
+        float: none !important;          
+    }
+
+    .external-link-box .caption {
+        text-align: center !important;
+        width: 100% !important;
+        margin: 15px 0 0 0 !important;
+    }
+}

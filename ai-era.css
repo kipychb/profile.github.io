@@ -1,4 +1,3 @@
-/* --- 1. 基礎重置與磨砂流體背景 --- */
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +7,7 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: #1a1b1f; /* 深銀灰色基調 */
+    background-color: #1a1b1f; 
     color: #fff;
     font-family: 'Cormorant Upright', serif;
     overflow-x: hidden;
@@ -19,7 +18,6 @@ body {
     transition: background-color 0.8s ease;
 }
 
-/* 🌊 模擬妳提供的「銀色絲綢褶皺」流體感 */
 body::before {
     content: '';
     position: fixed;
@@ -33,13 +31,12 @@ body::before {
     animation: fluid-rotate 25s infinite linear;
 }
 
-/* 🎛️ 高密度顆粒：複製那張圖的磨砂質感 */
 body::after {
     content: '';
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.35; /* 強化顆粒感 */
+    opacity: 0.35; 
     z-index: -1;
     pointer-events: none;
     mix-blend-mode: soft-light;
@@ -51,7 +48,6 @@ body::after {
     100% { transform: rotate(0deg) scale(1); }
 }
 
-/* --- 2. 專業實驗室導覽列 --- */
 .gallery-nav {
     position: fixed;
     top: 0; width: 100%;
@@ -76,7 +72,7 @@ body::after {
 }
 
 .back-home {
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 10px;
     text-decoration: none; color: #fff;
     padding: 12px 25px;
     background: rgba(255,255,255,0.05);
@@ -86,11 +82,9 @@ body::after {
 }
 
 .back-home i { font-size: 16px; }
-.home-text { font-size: 11px; letter-spacing: 2px; font-weight: bold; }
+.home-text { font-size: 13px; letter-spacing: 2px; font-weight: bold; }
 
 
-
-/* --- 3. 視覺核心：收緊的水鑽字體 --- */
 .experiment-container {
     width: 100%; max-width: 1000px;
     margin-top: 100px;
@@ -114,16 +108,15 @@ body::after {
     font-weight: 900; font-style: italic;
     white-space: nowrap;
     transition: opacity 0.5s ease;
-    letter-spacing: -10px; /* 這裡讓字體收緊，不那麼開 */
+    letter-spacing: -10px;
 }
 
 .rhinestone-char {
     position: relative;
-    /* 強化版水鑽網點：主鑽 + 暈光 */
     background-image: 
         radial-gradient(circle, #fff 1.5px, transparent 2px),
         radial-gradient(circle, rgba(255, 255, 255, 0.4) 3px, transparent 4px);
-    background-size: 7px 7px; /* 鑽點間距變小，更細緻 */
+    background-size: 7px 7px; 
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -132,27 +125,25 @@ body::after {
     animation: sparkle 3s infinite alternate ease-in-out;
 }
 
-/* 理性：高亮白銀 */
 .logic-layer .rhinestone-char {
     background-color: #ffffff;
     filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
-/* 感性：冷冽銀藍 */
 .emotion-layer .rhinestone-char {
-    background-color: #0088ff; /* 來自 CD 盤心的藍 */
+    background-color: #0088ff;
     filter: drop-shadow(0 0 8px rgba(0, 136, 255, 0.8));
 }
 
 @keyframes sparkle {
     0%, 100% { filter: brightness(1) contrast(1); }
-    50% { filter: brightness(1.5) contrast(1.2); transform: scale(1.01); }
+    50% { filter: brightness(1.5) contrast(1.2); 
+    transform: scale(1.01); }
 }
 
-/* --- 4. 創意拉桿：實驗室指針感 --- */
 .control-section { width: 450px; text-align: center; }
 
-/* --- 圖片拉桿容器 --- */
+
 .slider-container {
     width: 100%;
     position: relative;
@@ -161,12 +152,13 @@ body::after {
 
 .slider-labels{
     margin-bottom: 10px;
-    letter-spacing: 1px;
-
+    letter-spacing: 2px;
+    color:#eaeaea;
+    font-size: 12px;
 }
 
 .cyber-slider {
-    -webkit-appearance: none; /* 必備：去除瀏覽器預設樣式 */
+    -webkit-appearance: none; 
     width: 100%;
     height: 2px;
     background: rgba(255, 255, 255, 0.15);
@@ -174,32 +166,25 @@ body::after {
     cursor: pointer;
 }
 
-/* 🏆 重點：將滑動鈕 (Thumb) 變成圖片 */
 .cyber-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 50px;  /* 圖片寬度，依據妳的圖片比例調整 */
-    height: 50px; /* 圖片高度 */
-    
-    /* 1. 這裡放入妳的圖片路徑 */
+    width: 50px;  
+    height: 50px; 
     background-image: url('image/wing-button.png'); 
-    
-    /* 2. 讓圖片完整顯示不重複 */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-
-    /* 3. 加入一點發光感，讓圖片更融入銀色背景 */
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-    
     cursor: ew-resize;
-    border: none; /* 去除預設邊框 */}
+    border: none; }
 
 .hint {
-    margin-top: 5px; font-size: 10px; color: #666; letter-spacing: 4px;
+    margin-top: 5px; font-size: 10px; color: #666; 
+    letter-spacing: 4px;
 }
 
-/* --- 5. 磨砂玻璃卡片與內文 --- */
-.essay-section { width: 100%; max-width: 800px; margin-top: 20px; margin-bottom: 100px;}
+.essay-section { width: 100%; max-width: 800px; 
+margin-top: 20px; margin-bottom: 100px;}
 
 .essay-card {
     padding: 60px;
@@ -224,16 +209,85 @@ body::after {
     font-family: 'Noto Serif TC', serif;
     font-size: 17px;
     line-height: 2.4;
-    color: #ccc;
+    color: #eaeaea;
     text-align: justify;
     max-width: 600px;
     margin: 0 auto;
 }
 
-/* 響應式 */
+/* RWD */
+
+@media (max-width: 1024px) {
+    .gallery-nav {
+        padding: 30px 60px;
+    }
+    .experiment-container {
+        max-width: 85%;
+    }
+}
+
 @media (max-width: 768px) {
-    .gallery-nav { padding: 25px; }
-    .control-section { width: 90%; }
-    .rhinestone-layer { letter-spacing: -5px; }
-    .essay-card { padding: 40px 20px; }
+    .gallery-nav {
+        padding: 40px;
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .nav-serial { display: none; }
+
+    .visual-section {
+        height: 200px; 
+    }
+    .rhinestone-layer {
+        letter-spacing: -5px; 
+    }
+
+    .control-section {
+        width: 90%; 
+    }
+    .cyber-slider::-webkit-slider-thumb {
+        width: 40px; 
+        height: 40px;
+    }
+
+    .essay-card {
+        padding: 40px 20px;
+    }
+    .essay-title {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    .essay-content {
+        font-size: 15px;
+        line-height: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .gallery-title {
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+
+    .back-home {
+        padding: 10px 20px;
+    }
+    
+
+    .rhinestone-layer {
+        font-size: clamp(50px, 22vw, 100px);
+    }
+}
+
+/* 針對觸控裝置優化 */
+@media (hover: none) {
+    .back-home:active {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(0.95);
+    }
 }

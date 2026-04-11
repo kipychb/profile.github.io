@@ -1,4 +1,3 @@
-/* --- 1. 背景與全域 (保持不變) --- */
 body {
     margin: 0; padding: 0;
     background: linear-gradient(-45deg, #e0e0e0, #ffffff, #cfcfcf, #f5f5f5);
@@ -7,7 +6,7 @@ body {
     font-family: 'Cormorant Upright', serif;
     color: #333;
     overflow-x: hidden;
-    height:auto;
+    height: auto;
 }
 
 @keyframes silver-flow {
@@ -28,12 +27,13 @@ body::before {
 }
 
 .window {
-    position: fixed; top: 0; left: 0; width: 200vw; height: 200vh;
+    position: fixed; top: 0; left: 0; 
+    width: 100%; height: 100%; 
     background-image: url("image/window-bg.jpg"); 
-    background-size: 1000px; opacity: 0.25; z-index: -999;
+    background-size: cover; 
+    opacity: 0.25; z-index: -999;
 }
 
-/* --- 2. 導航 (修正 Back Home 位置) --- */
 .gallery-nav { 
     position: fixed; 
     top: 0; 
@@ -57,7 +57,6 @@ body::before {
     font-weight: 500;
 }
 
-/* --- 3. 容器與軌道 --- */
 .linear-quest-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -84,7 +83,6 @@ body::before {
     z-index: 2;
 }
 
-/* --- 4. 節點排版 (修正圖片對齊文字中間) --- */
 .quest-node { 
     display: flex; 
     align-items: center; 
@@ -102,23 +100,31 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.5s ease;
 }
 
-.path-star {
+
+.path-star-container .path-star {
     z-index: 10;
-    opacity: 0.3; 
-    transition: 0.5s ease;
+    opacity: 0.6; 
+    filter: grayscale(100%);
+    transform: scale(0.9);
+    transition: all 0.5s ease;
 }
 
 .path-star img {
-    width: 45px;
+    width: 40px;
     height: auto;
     display: block;
 }
 
-.path-star.active {
+.path-star-container.active .path-star {
     opacity: 1;
-    filter: drop-shadow(0 0 12px #d4af37) brightness(1.1);
+    filter: grayscale(0%) drop-shadow(0 0 10px #d4af37) brightness(1.1);
+    transform: scale(1.1);
+}
+
+.path-star-container.active .path-star img {
     animation: star-glow-img 2.5s infinite ease-in-out;
 }
 
@@ -127,7 +133,6 @@ body::before {
     50% { transform: scale(1.15) rotate(10deg); }
 }
 
-/* --- 5. 圖片與內容 (縮減文字間距) --- */
 .node-art img {
     width: 160px;
     background: rgba(255, 255, 255, 0.9);
@@ -137,24 +142,7 @@ body::before {
     display: block;
 }
 
-.node-content {
-    flex: 1;
-}
-
-.node-title { font-size: 26px; 
-    color: #a34848; 
-    margin: 0 0 15px 0; 
-    font-weight: 700; }
-
-.stat-list { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 8px;
-}
-
-.stat-group {
-    margin: 0;
-}
+.node-title { font-size: 26px; color: #a34848; margin: 0 0 15px 0; font-weight: 700; }
 
 .stat { 
     display: flex; 
@@ -178,7 +166,6 @@ body::before {
 
 .stat-desc::before { content: "⌞"; margin-right: 8px; }
 
-/* --- 6. 貓咪行走 --- */
 .player-character {
     position: absolute;
     left: 115px; 
@@ -191,9 +178,99 @@ body::before {
 
 @keyframes walk-down-steady {
     0% { top: 0; transform: translateY(0); }
-    100% { top: 100%; } 
+    100% { top: 98%; } 
 }
 
-/* --- 7. TBC --- */
 .tbc-section { padding: 80px 0; }
 .tbc-title { font-size: 32px; color: #666; font-style: italic; margin: 0; opacity: 0.8;}
+
+/* RWD  */
+@media (max-width: 768px) {
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .gallery-nav { 
+        position: relative !important; 
+        padding: 20px 25px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .gallery-title { font-size: 26px !important; margin-bottom: 5px !important; }
+    .back-home { font-size: 16.5px !important; padding-left: 0 !important; margin-top: 5px !important; }
+
+    .linear-quest-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 10px 60px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .linear-quest-container::before { left: 35px !important; }
+    .player-character { left: 12px !important; width: 50px !important; }
+
+
+    .path-star-container {
+        position: absolute !important;
+        left: -88px !important; 
+        top: 35px !important; 
+        width: 25px !important;
+        height: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 5 !important;
+    }
+
+    .path-star-container .path-star {
+        opacity: 1.1 !important;
+        filter: grayscale(100%) !important;
+        transition: all 0.5s ease !important;
+    }
+
+    .path-star img { width:28px !important; height: auto !important; }
+
+    .path-star-container.active .path-star {
+        opacity: 1.1 !important;
+        filter: grayscale(0%) drop-shadow(0 0 10px #d4af37) brightness(1.2) !important;
+    }
+
+    .path-star-container.active .path-star img {
+        animation: star-glow-img 2.5s infinite ease-in-out !important;
+    }
+
+    .vertical-path {
+        padding-left: 50px !important; 
+        padding-right: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .quest-node {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px 0 !important;
+        gap: 10px !important;
+    }
+
+    .node-art img { width: 50px !important; margin-left: 0 !important; display: block !important; }
+    .node-content { width: 100% !important; }
+    .node-title { font-size: 16px !important; margin: 5px 0 !important; }
+
+    .stat { flex-direction: column !important; align-items: flex-start !important; gap: 2px !important; }
+    .stars { font-size: 10px !important; }
+    .stat-desc { font-size: 11px !important; line-height: 1.4 !important; word-break: break-all !important; }
+
+    .tbc-section { padding: 40px 0 40px 5px !important; text-align: left !important; }
+    .tbc-title { font-size: 18px !important; }
+}
