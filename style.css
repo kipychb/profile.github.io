@@ -17,23 +17,22 @@ body {
 }
 
 .main-header { 
-    padding: 10px 0 0 80px; 
+    padding: 25px 0 0 90px; 
 }
 
 
 .title {
     font-family: 'Cormorant Upright', serif;
-    font-size: 5rem; 
-    gap:0px;
+    font-size: 4rem; 
     font-weight: 400;
     font-style: italic;
     
     background: linear-gradient(
         to bottom, 
-        #ffffff 0%,   /* 頂部高光 */
+        #ffffff 5%,   /* 頂部高光 */
         #e0e0e0 25%,  /* 淺灰 */
-        #b0b0b0 50%,  /* 深灰 (製造金屬質感) */
-        #d8d8d8 75%,  /* 反光層 */
+        #b0b0b0 70%,  /* 深灰 (製造金屬質感) */
+        #d8d8d8 93%,  /* 反光層 */
         #ffffff 100%  /* 底部高光 */
     );
     -webkit-background-clip: text;
@@ -104,7 +103,7 @@ body {
 .marquee-content {
     display: flex;
     white-space: nowrap;
-    animation: marquee 5s linear infinite;
+    animation: marquee 10s linear infinite;
 }
 
 .marquee-content span {
