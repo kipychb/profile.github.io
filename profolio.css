@@ -236,8 +236,12 @@ relative; padding-left: 15px; }
     }
 
     .description p, .description li {
-        font-size: 15px; 
+        font-size: 16px; 
         line-height: 1.6;
+    }
+
+    .view-project-link{
+        font-size: 14px;
     }
 
     .branding-showcase {
@@ -259,7 +263,7 @@ relative; padding-left: 15px; }
     }
 
     .hall-label {
-        font-size: 1rem;
+        font-size: 1.2rem;
         letter-spacing: 6px;
         margin-bottom: 30px;
     }

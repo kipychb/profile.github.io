@@ -151,10 +151,14 @@ body::after {
 }
 
 .slider-labels{
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     letter-spacing: 2px;
-    color:#eaeaea;
+}
+
+.label{
     font-size: 12px;
+    color:#eaeaea;
+    opacity: 0.85;
 }
 
 .cyber-slider {
@@ -245,9 +249,10 @@ margin-top: 20px; margin-bottom: 100px;}
         width: 90%; 
     }
     .cyber-slider::-webkit-slider-thumb {
-        width: 40px; 
-        height: 40px;
+        width: 43px; 
+        height: 43px;
         background-color: transparent;
+        border: none;
     }
 
     .essay-card {
