@@ -168,7 +168,7 @@ html, body {
         margin: 40px auto 120px auto !important; 
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 30px 20px !important;/
+        gap: 40px 20px !important;/
     }
     
     .illustration {
