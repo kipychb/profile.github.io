@@ -245,14 +245,10 @@ margin-top: 20px; margin-bottom: 100px;}
         letter-spacing: -5px; 
     }
 
-    .control-section {
-        width: 90%; 
-    }
     .cyber-slider::-webkit-slider-thumb {
         width: 43px; 
         height: 43px;
         background-color: transparent;
-        border: none;
     }
 
     .essay-card {

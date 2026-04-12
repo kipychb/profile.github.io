@@ -197,9 +197,8 @@ body::after {
 .art-piece img:hover { transform: scale(1.03); }
 
 .caption {
-    margin-top: 15px;
-    font-size: 13px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    letter-spacing: 1px;
     color: #666;
     text-transform: uppercase;
 }
@@ -215,7 +214,7 @@ body::after {
 
 .video-no-frame {
     width: 100%;
-    max-width: 350px; 
+    max-width: 200px; 
     margin: 0 auto;
     background: none;
     padding: 0;     
@@ -243,7 +242,7 @@ video { width: 100%; display: block; }
 .external-link-box {
     grid-column: 1 / 13;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .btn-visit {
@@ -280,7 +279,7 @@ video { width: 100%; display: block; }
 }
 
 .text-left { text-align: left; }
-.mt-20 { margin-top: 10px; }
+.mt-20 { margin-top: 3px; }
 .mt-0 { margin-top: 15px; }
 
 .btn-p1 { border-color: #a34848; color: #a34848; } 
@@ -378,7 +377,7 @@ video { width: 100%; display: block; }
         grid-column: 1 / -1 !important;  
         margin-left: 0 !important;
         margin-right: 0 !important;
-        padding: 0 !important;
+        padding: 15px !important;
     }
 
     .btn-visit {

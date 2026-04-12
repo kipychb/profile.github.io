@@ -171,7 +171,7 @@ body::before {
     left: 115px; 
     width: 70px;
     z-index: 100;
-    animation: walk-down-steady 30s infinite linear;
+    animation: walk-down-steady 23s infinite linear;
 }
 
 .char-img { width: 100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }

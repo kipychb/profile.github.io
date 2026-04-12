@@ -236,7 +236,7 @@ cursor: pointer; color: #a34848; font-size: 22px; font-style: italic; }
     body {
         flex-direction: column; 
         overflow-y: auto;       
-        padding: 80px 40px;     
+        padding: 80px 25px;     
         height: auto;
         justify-content:center;
         gap: 35px;
