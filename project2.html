@@ -24,9 +24,8 @@
                     <span class="category-tag p2-tag">ENTERPRISE / CIO ROLE</span>
                     <p class="main-quote">「清晰的視覺導引是最強大的品牌行銷。」</p>
                     <p class="description">
-                        在這次的企業概論專案中，我擔任資訊長（CIO）一職，核心任務是將龐雜的旅遊資訊，轉化為具備吸引力且直覺的數位體驗。
-                        我運用 Figma
-                        打造原型，在結構上採取「區塊導向」與「連結導向」的邏輯，並選用復古色系為品牌注入暖意。為了在海報宣傳中脫穎而出，我融入了「盲盒、驚喜包」的趣味概念，成功引發受眾的好奇心。這次經歷讓我學會在美感與實用、資訊與創意之間找到平衡。
+                        在此次企業概論專案中，我擔任資訊長（CIO），將龐雜資訊轉化為直覺數位體驗。運用 Figma
+                        打造原型，採取「區塊導向」與「連結導向」邏輯，並融入復古暖色系。宣傳上結合「盲盒」趣味概念，在美感與實用、資訊與創意之間達成平衡。
                     </p>
                 </div>
             </div>
@@ -37,7 +36,6 @@
 
                 <div class="art-piece grid-left">
                     <img src="image/bussiness-poster.JPG" alt="Project Poster" class="img-standard">
-
                     <div class="caption">
                         <strong>★ BRAND POSTER</strong> // 以「盲盒」為靈感設計的海報，透過復古色系與驚喜感吸引目光。
                     </div>
@@ -45,8 +43,9 @@
 
                 <div class="video-container grid-right">
                     <div class="video-no-frame">
-                        <video muted loop playsinline onclick="this.paused ? this.play() : this.pause();">
+                        <video autoplay muted loop playsinline preload="auto" class="auto-video">
                             <source src="video/business-video.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
                         </video>
                     </div>
                     <div class="caption text-left mt-0">
@@ -54,24 +53,34 @@
                     </div>
 
                     <div class="external-link-box grid-full">
-                        <a href="video/business-video.mp4" target="_blank" class="btn-visit btn-p3">VIEW FULL
-                            Website →</a>
+                        <a href="video/business-video.mp4" target="_blank" class="btn-visit btn-p3">VIEW FULL Website
+                            →</a>
                         <div class="caption mt-20">點擊連結查看完整網頁</div>
                     </div>
                 </div>
-
 
             </div>
         </section>
     </main>
 
     <script>
-        window.onload = () => { document.getElementById('main-content').classList.add('loaded'); }
+        window.onload = () => {
+            document.getElementById('main-content').classList.add('loaded');
+            const vids = document.querySelectorAll('video');
+            vids.forEach(v => {
+                v.play().catch(error => {
+                    console.log("自動播放被系統擋住");
+                    document.body.addEventListener('click', () => v.play(), { once: true });
+                });
+            });
+        }
+
         const cursor = document.querySelector('.custom-cursor');
         document.addEventListener('mousemove', e => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
+
         document.querySelectorAll('.art-piece, .video-no-frame, .btn-visit').forEach(item => {
             item.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
             item.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
