@@ -96,7 +96,7 @@
     color: #332416;
     margin-bottom: 10px;
     letter-spacing: 2px;
-    opacity: 0.95;
+    opacity: 0.9;
 }
 
 .address-line {
@@ -115,7 +115,7 @@
 
 .method-link {
     text-decoration: none;
-    color:#893131;
+    color:#8b2e2e;
     font-weight: bold;
     font-size: 18px;
     transition: 0.3s;
@@ -136,7 +136,7 @@
 
 .wax-seal {
     width: 50px; height: 50px;
-    background: #893131; 
+    background: #732828; 
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
