@@ -41,7 +41,7 @@ font-style: italic; letter-spacing: 1px; }
     height: 25px; padding: 0 10px; display: flex; 
     justify-content: space-between; align-items: center;
 }
-.window-title-text { font-size: 12px; color: white; font-weight: bold; }
+.window-title-text { font-size: 12.5px; color: white; font-weight: bold; }
 .win-btn {
     width: 15px; height: 15px; background-color: #c0c0c0;
     border: 2px solid; border-color: #fff #000 #000 #fff;
@@ -138,12 +138,13 @@ cursor: pointer; color: #a34848; font-size: 22px; font-style: italic; }
     border-color: #fff #808080 #c0c0c0 #fff; 
     border-bottom: none;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12.5px;
     margin-right: 2px;
     font-family: 'Arial', sans-serif;
     position: relative;
     top: 2px;
     z-index: 1;
+    color:#333;
 }
 
 .tab-btn.active {
@@ -153,6 +154,7 @@ cursor: pointer; color: #a34848; font-size: 22px; font-style: italic; }
     background: #fff;
     font-weight: bold;
     z-index: 10;
+    color:#333;
 }
 
 /* 分頁內容 */
